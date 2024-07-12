@@ -1,0 +1,9 @@
+name: kyc_app_client
+description: Starting point for a client.
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  grpc: ^3.2.4
+  protobuf: ^3.1.0
