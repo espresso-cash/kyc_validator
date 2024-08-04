@@ -87,7 +87,8 @@ class _KycPageState extends State<KycPage> {
             KycRequest(
               secretKey: state.rawSecretKey,
               partnerToken: state.partnerToken,
-              userPk: state.authPublicKey,
+              userAuthPk: state.authPublicKey,
+              userPublicKey: state.userPublicKey,
             ),
           );
 

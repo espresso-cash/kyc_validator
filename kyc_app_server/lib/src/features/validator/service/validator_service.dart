@@ -22,19 +22,21 @@ class ValidatorService {
   Future<void> call({
     required String partnerToken,
     required String secretKey,
-    required String userPK,
+    required String userAuthPK,
+    required String userPublicKey,
   }) async {
     await _kycClient.generateAuthToken(partnerToken, secretKey);
 
     final user = await _kycClient.fetchDataForSmile(
-        secretKey: secretKey, userPK: userPK);
+      secretKey: secretKey,
+      userPK: userAuthPK,
+    );
 
-    await _sendToSmile(user);
+    await _sendToSmile(user.copyWith(userId: userPublicKey));
   }
 
-  Future<String> _sendToSmile(KycUserInfo user) async {
+  Future<bool> _sendToSmile(KycUserInfo user) async {
     final jobId = Uuid().v4();
-    final userId = Uuid().v4(); //TODO make it user public key
 
     try {
       final dob = DateFormat('dd/MM/yyyy').format(DateTime.parse(user.dob));
@@ -45,7 +47,7 @@ class ValidatorService {
         UploadRequestDto(
           callbackUrl: smileWebhookUrl,
           partnerParams: {
-            'user_id': userId,
+            'user_id': user.userId,
             'job_id': jobId,
             'job_type': '1',
             // Info below is for mocking
@@ -80,7 +82,7 @@ class ValidatorService {
 
       await upload.upload(await data.toZip());
 
-      return userId;
+      return true;
     } catch (ex) {
       print(ex);
       throw Exception('Failed to upload');

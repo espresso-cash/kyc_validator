@@ -16,12 +16,14 @@ class WalletAppState extends ChangeNotifier {
   PartnerModel? get partnerInfo => _partnerInfo;
   String? get email => _email;
   String? get phoneNumber => _phoneNumber;
+  String get userPublicKey => _userPublicKey;
 
   Ed25519HDKeyPair? _wallet;
 
   late String _authPublicKey = '';
   String _partnerToken = '';
   late String _rawSecretKey = '';
+  String _userPublicKey = '';
 
   PartnerModel? _partnerInfo;
   String? _email;
@@ -40,9 +42,12 @@ class WalletAppState extends ChangeNotifier {
       },
     );
 
-    await _client.init();
-    await _client.initStorage(walletAddress: _wallet!.publicKey.toString());
+    final publicKey = _wallet!.publicKey.toString();
 
+    await _client.init();
+    await _client.initStorage(walletAddress: publicKey);
+
+    _userPublicKey = publicKey;
     _rawSecretKey = _client.rawSecretKey;
     _authPublicKey = _client.authPublicKey;
 
