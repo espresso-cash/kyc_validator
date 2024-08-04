@@ -63,7 +63,7 @@ class UploadRequestDto with _$UploadRequestDto {
     @Default('1.0.0') String sourceSdkVersion,
     @Default('data.zip') String fileName,
     @Default({}) Map<String, dynamic> modelParameters,
-    @Default(smileWebhookUrl) String callbackUrl,
+    required String callbackUrl,
     required Map<String, dynamic> partnerParams,
   }) = _UploadRequestDto;
 

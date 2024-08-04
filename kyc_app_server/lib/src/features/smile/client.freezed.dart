@@ -171,7 +171,7 @@ class _$UploadRequestDtoImpl implements _UploadRequestDto {
       this.sourceSdkVersion = '1.0.0',
       this.fileName = 'data.zip',
       final Map<String, dynamic> modelParameters = const {},
-      this.callbackUrl = smileWebhookUrl,
+      required this.callbackUrl,
       required final Map<String, dynamic> partnerParams})
       : _modelParameters = modelParameters,
         _partnerParams = partnerParams;
@@ -198,7 +198,6 @@ class _$UploadRequestDtoImpl implements _UploadRequestDto {
   }
 
   @override
-  @JsonKey()
   final String callbackUrl;
   final Map<String, dynamic> _partnerParams;
   @override
@@ -264,7 +263,7 @@ abstract class _UploadRequestDto implements UploadRequestDto {
           final String sourceSdkVersion,
           final String fileName,
           final Map<String, dynamic> modelParameters,
-          final String callbackUrl,
+          required final String callbackUrl,
           required final Map<String, dynamic> partnerParams}) =
       _$UploadRequestDtoImpl;
 

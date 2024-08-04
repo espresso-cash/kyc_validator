@@ -42,9 +42,9 @@ class OtpService {
 
     final smtpServer = SmtpServer(
       smtpHost,
-      port: port,
-      username: username,
-      password: password,
+      port: smtpPort,
+      username: smtpUsername,
+      password: smtpPassword,
     );
 
     final message = Message()
@@ -89,7 +89,7 @@ class OtpService {
     );
 
     try {
-      final response = await _twilioApiClient.sendSms(sms);
+      final response = await _twilioApiClient.sendSms(twilioAccountSid, sms);
       print('OTP sent: ${response.status}');
     } on MailerException catch (e) {
       print('OTP not sent. \n$e');

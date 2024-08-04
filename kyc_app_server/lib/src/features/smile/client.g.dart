@@ -14,7 +14,7 @@ _$UploadRequestDtoImpl _$$UploadRequestDtoImplFromJson(
       fileName: json['file_name'] as String? ?? 'data.zip',
       modelParameters:
           json['model_parameters'] as Map<String, dynamic>? ?? const {},
-      callbackUrl: json['callback_url'] as String? ?? smileWebhookUrl,
+      callbackUrl: json['callback_url'] as String,
       partnerParams: json['partner_params'] as Map<String, dynamic>,
     );
 

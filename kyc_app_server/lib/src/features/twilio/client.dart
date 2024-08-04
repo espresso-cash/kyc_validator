@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../config.dart';
 import 'interceptor.dart';
 
 part 'client.freezed.dart';
@@ -18,8 +17,9 @@ abstract class TwilioApiClient {
   factory TwilioApiClient() =>
       _TwilioApiClient(Dio()..interceptors.add(const TwilioInterceptor()));
 
-  @POST('/2010-04-01/Accounts/$twilioAccountSid/Messages.json')
+ @POST('/2010-04-01/Accounts/{accountSid}/Messages.json')
   Future<SendSmsResponseDto> sendSms(
+    @Path('accountSid') String accountSid,
     @Body() SendSmsRequestDto request,
   );
 }

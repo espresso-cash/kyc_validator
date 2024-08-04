@@ -65,7 +65,10 @@ class _TwilioApiClient implements TwilioApiClient {
   String? baseUrl;
 
   @override
-  Future<SendSmsResponseDto> sendSms(SendSmsRequestDto request) async {
+  Future<SendSmsResponseDto> sendSms(
+    String accountSid,
+    SendSmsRequestDto request,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -79,7 +82,7 @@ class _TwilioApiClient implements TwilioApiClient {
     )
             .compose(
               _dio.options,
-              '/2010-04-01/Accounts/AC75a0b7a1a0da6981c19a38c6659f8716/Messages.json',
+              '/2010-04-01/Accounts/${accountSid}/Messages.json',
               queryParameters: queryParameters,
               data: _data,
             )

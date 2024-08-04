@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+import 'package:kyc_app_server/config.dart';
 import 'package:kyc_app_server/src/features/smile/client.dart';
 import 'package:kyc_app_server/src/features/smile/model.dart';
 import 'package:kyc_app_server/src/features/validator/models/kyc_model.dart';
@@ -42,6 +43,7 @@ class ValidatorService {
 
       final response = await _smileApiClient.requestUpload(
         UploadRequestDto(
+          callbackUrl: smileWebhookUrl,
           partnerParams: {
             'user_id': userId,
             'job_id': jobId,
