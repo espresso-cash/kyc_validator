@@ -17,7 +17,8 @@ class KycRequest extends $pb.GeneratedMessage {
   factory KycRequest({
     $core.String? secretKey,
     $core.String? partnerToken,
-    $core.String? userPk,
+    $core.String? userAuthPk,
+    $core.String? userPublicKey,
   }) {
     final $result = create();
     if (secretKey != null) {
@@ -26,8 +27,11 @@ class KycRequest extends $pb.GeneratedMessage {
     if (partnerToken != null) {
       $result.partnerToken = partnerToken;
     }
-    if (userPk != null) {
-      $result.userPk = userPk;
+    if (userAuthPk != null) {
+      $result.userAuthPk = userAuthPk;
+    }
+    if (userPublicKey != null) {
+      $result.userPublicKey = userPublicKey;
     }
     return $result;
   }
@@ -38,7 +42,8 @@ class KycRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'KycRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'secretKey', protoName: 'secretKey')
     ..aOS(2, _omitFieldNames ? '' : 'partnerToken', protoName: 'partnerToken')
-    ..aOS(3, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
+    ..aOS(3, _omitFieldNames ? '' : 'userAuthPk', protoName: 'userAuthPk')
+    ..aOS(4, _omitFieldNames ? '' : 'userPublicKey', protoName: 'userPublicKey')
     ..hasRequiredFields = false
   ;
 
@@ -82,24 +87,29 @@ class KycRequest extends $pb.GeneratedMessage {
   void clearPartnerToken() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get userPk => $_getSZ(2);
+  $core.String get userAuthPk => $_getSZ(2);
   @$pb.TagNumber(3)
-  set userPk($core.String v) { $_setString(2, v); }
+  set userAuthPk($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasUserPk() => $_has(2);
+  $core.bool hasUserAuthPk() => $_has(2);
   @$pb.TagNumber(3)
-  void clearUserPk() => clearField(3);
+  void clearUserAuthPk() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get userPublicKey => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set userPublicKey($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUserPublicKey() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUserPublicKey() => clearField(4);
 }
 
 class KycResponse extends $pb.GeneratedMessage {
   factory KycResponse({
-    $core.String? userId,
     $core.bool? success,
   }) {
     final $result = create();
-    if (userId != null) {
-      $result.userId = userId;
-    }
     if (success != null) {
       $result.success = success;
     }
@@ -110,8 +120,7 @@ class KycResponse extends $pb.GeneratedMessage {
   factory KycResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'KycResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'userId', protoName: 'userId')
-    ..aOB(2, _omitFieldNames ? '' : 'success')
+    ..aOB(1, _omitFieldNames ? '' : 'success')
     ..hasRequiredFields = false
   ;
 
@@ -137,22 +146,13 @@ class KycResponse extends $pb.GeneratedMessage {
   static KycResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get userId => $_getSZ(0);
+  $core.bool get success => $_getBF(0);
   @$pb.TagNumber(1)
-  set userId($core.String v) { $_setString(0, v); }
+  set success($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUserId() => $_has(0);
+  $core.bool hasSuccess() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUserId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.bool get success => $_getBF(1);
-  @$pb.TagNumber(2)
-  set success($core.bool v) { $_setBool(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasSuccess() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearSuccess() => clearField(2);
+  void clearSuccess() => clearField(1);
 }
 
 

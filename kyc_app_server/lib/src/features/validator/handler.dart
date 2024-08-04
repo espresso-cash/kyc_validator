@@ -12,9 +12,10 @@ class KycEndpoint extends KycServiceBase {
     await service.call(
       partnerToken: request.partnerToken,
       secretKey: request.secretKey,
-      userPK: request.userPk,
+      userAuthPK: request.userAuthPk,
+      userPublicKey: request.userPublicKey,
     );
 
-    return KycResponse(userId: 'userId', success: true);
+    return KycResponse(success: true);
   }
 }

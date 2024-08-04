@@ -19,26 +19,26 @@ const KycRequest$json = {
   '2': [
     {'1': 'secretKey', '3': 1, '4': 1, '5': 9, '10': 'secretKey'},
     {'1': 'partnerToken', '3': 2, '4': 1, '5': 9, '10': 'partnerToken'},
-    {'1': 'userPk', '3': 3, '4': 1, '5': 9, '10': 'userPk'},
+    {'1': 'userAuthPk', '3': 3, '4': 1, '5': 9, '10': 'userAuthPk'},
+    {'1': 'userPublicKey', '3': 4, '4': 1, '5': 9, '10': 'userPublicKey'},
   ],
 };
 
 /// Descriptor for `KycRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List kycRequestDescriptor = $convert.base64Decode(
     'CgpLeWNSZXF1ZXN0EhwKCXNlY3JldEtleRgBIAEoCVIJc2VjcmV0S2V5EiIKDHBhcnRuZXJUb2'
-    'tlbhgCIAEoCVIMcGFydG5lclRva2VuEhYKBnVzZXJQaxgDIAEoCVIGdXNlclBr');
+    'tlbhgCIAEoCVIMcGFydG5lclRva2VuEh4KCnVzZXJBdXRoUGsYAyABKAlSCnVzZXJBdXRoUGsS'
+    'JAoNdXNlclB1YmxpY0tleRgEIAEoCVINdXNlclB1YmxpY0tleQ==');
 
 @$core.Deprecated('Use kycResponseDescriptor instead')
 const KycResponse$json = {
   '1': 'KycResponse',
   '2': [
-    {'1': 'userId', '3': 1, '4': 1, '5': 9, '10': 'userId'},
-    {'1': 'success', '3': 2, '4': 1, '5': 8, '10': 'success'},
+    {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
   ],
 };
 
 /// Descriptor for `KycResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List kycResponseDescriptor = $convert.base64Decode(
-    'CgtLeWNSZXNwb25zZRIWCgZ1c2VySWQYASABKAlSBnVzZXJJZBIYCgdzdWNjZXNzGAIgASgIUg'
-    'dzdWNjZXNz');
+    'CgtLeWNSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
 
