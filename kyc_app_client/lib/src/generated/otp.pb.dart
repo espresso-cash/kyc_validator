@@ -144,11 +144,15 @@ class SendOtpResponse extends $pb.GeneratedMessage {
 class VerifyOtpRequest extends $pb.GeneratedMessage {
   factory VerifyOtpRequest({
     $core.String? identifier,
+    $core.String? userPk,
     $core.String? otp,
   }) {
     final $result = create();
     if (identifier != null) {
       $result.identifier = identifier;
+    }
+    if (userPk != null) {
+      $result.userPk = userPk;
     }
     if (otp != null) {
       $result.otp = otp;
@@ -161,7 +165,8 @@ class VerifyOtpRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'VerifyOtpRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identifier')
-    ..aOS(2, _omitFieldNames ? '' : 'otp')
+    ..aOS(2, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
+    ..aOS(3, _omitFieldNames ? '' : 'otp')
     ..hasRequiredFields = false
   ;
 
@@ -196,13 +201,22 @@ class VerifyOtpRequest extends $pb.GeneratedMessage {
   void clearIdentifier() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get otp => $_getSZ(1);
+  $core.String get userPk => $_getSZ(1);
   @$pb.TagNumber(2)
-  set otp($core.String v) { $_setString(1, v); }
+  set userPk($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasOtp() => $_has(1);
+  $core.bool hasUserPk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOtp() => clearField(2);
+  void clearUserPk() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get otp => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set otp($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOtp() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOtp() => clearField(3);
 }
 
 class VerifyOtpResponse extends $pb.GeneratedMessage {

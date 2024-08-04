@@ -34,6 +34,7 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
       VerifyOtpRequest(
         identifier: 'email',
         otp: _controller.text,
+        userPk: context.read<WalletAppState>().authPublicKey,
       ),
     );
 

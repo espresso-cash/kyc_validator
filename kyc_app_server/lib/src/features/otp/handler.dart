@@ -37,7 +37,11 @@ class OtpEndpoint extends OtpServiceBase {
       ServiceCall call, VerifyOtpRequest request) async {
     final service = sl<OtpService>();
 
-    final isValid = await service.verifyOtp(request.identifier, request.otp);
+    final isValid = await service.verifyOtp(
+      userPK: request.userPk,
+      otp: request.otp,
+      identifier: request.identifier,
+    );
 
     return VerifyOtpResponse()..isValid = isValid;
   }

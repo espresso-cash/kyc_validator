@@ -10,6 +10,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:kyc_app_server/di.dart' as _i648;
+import 'package:kyc_app_server/src/db/db.dart' as _i679;
+import 'package:kyc_app_server/src/features/otp/data/otp_repository.dart'
+    as _i853;
 import 'package:kyc_app_server/src/features/otp/service/otp_service.dart'
     as _i739;
 import 'package:kyc_app_server/src/features/smile/client.dart' as _i91;
@@ -30,6 +34,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final appModule = _$AppModule();
     gh.factory<_i91.SmileApiClient>(() => _i91.SmileApiClient());
     gh.factory<_i245.TwilioApiClient>(() => _i245.TwilioApiClient());
     await gh.singletonAsync<_i427.PartnerKycService>(
@@ -39,14 +44,23 @@ extension GetItInjectableX on _i174.GetIt {
       },
       preResolve: true,
     );
-    gh.singleton<_i739.OtpService>(() => _i739.OtpService(
-          gh<_i245.TwilioApiClient>(),
-          gh<_i427.PartnerKycService>(),
-        ));
+    await gh.lazySingletonAsync<_i679.AppDatabase>(
+      () => appModule.db(),
+      preResolve: true,
+    );
     gh.singleton<_i448.ValidatorService>(() => _i448.ValidatorService(
           gh<_i91.SmileApiClient>(),
           gh<_i427.PartnerKycService>(),
         ));
+    gh.factory<_i853.OtpRepository>(
+        () => _i853.OtpRepository(gh<_i679.AppDatabase>()));
+    gh.singleton<_i739.OtpService>(() => _i739.OtpService(
+          gh<_i245.TwilioApiClient>(),
+          gh<_i427.PartnerKycService>(),
+          gh<_i853.OtpRepository>(),
+        ));
     return this;
   }
 }
+
+class _$AppModule extends _i648.AppModule {}

@@ -45,14 +45,15 @@ const VerifyOtpRequest$json = {
   '1': 'VerifyOtpRequest',
   '2': [
     {'1': 'identifier', '3': 1, '4': 1, '5': 9, '10': 'identifier'},
-    {'1': 'otp', '3': 2, '4': 1, '5': 9, '10': 'otp'},
+    {'1': 'userPk', '3': 2, '4': 1, '5': 9, '10': 'userPk'},
+    {'1': 'otp', '3': 3, '4': 1, '5': 9, '10': 'otp'},
   ],
 };
 
 /// Descriptor for `VerifyOtpRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verifyOtpRequestDescriptor = $convert.base64Decode(
-    'ChBWZXJpZnlPdHBSZXF1ZXN0Eh4KCmlkZW50aWZpZXIYASABKAlSCmlkZW50aWZpZXISEAoDb3'
-    'RwGAIgASgJUgNvdHA=');
+    'ChBWZXJpZnlPdHBSZXF1ZXN0Eh4KCmlkZW50aWZpZXIYASABKAlSCmlkZW50aWZpZXISFgoGdX'
+    'NlclBrGAIgASgJUgZ1c2VyUGsSEAoDb3RwGAMgASgJUgNvdHA=');
 
 @$core.Deprecated('Use verifyOtpResponseDescriptor instead')
 const VerifyOtpResponse$json = {

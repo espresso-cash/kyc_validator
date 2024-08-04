@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:injectable/injectable.dart';
+import 'package:kyc_app_server/src/features/otp/data/otp_repository.dart';
 import 'package:kyc_app_server/src/features/twilio/client.dart';
 import 'package:kyc_app_server/src/features/validator/service/kyc_client.dart';
 import 'package:kyc_client_dart/kyc_client_dart.dart';
@@ -8,16 +9,14 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 import '../../../../config.dart';
-import '../models/otp_message.dart';
 
 @singleton
 class OtpService {
-  OtpService(this._twilioApiClient, this._kycClient);
+  OtpService(this._twilioApiClient, this._kycClient, this._otpRepository);
 
   final TwilioApiClient _twilioApiClient;
   final PartnerKycService _kycClient;
-
-  static final Map<DataInfoKeys, OtpMessage> _otpMemoryStorage = {};
+  final OtpRepository _otpRepository;
 
   Future<void> sendOtpByEmail({
     required String partnerToken,
@@ -25,12 +24,12 @@ class OtpService {
     required String userPK,
   }) async {
     final otp = _generateVerificationCode();
-    final otpMessage = OtpMessage(
-      identifier: DataInfoKeys.email,
+    _otpRepository.createOtpRecord(
+      userPK: userPK,
       otp: otp,
-      expiry: DateTime.now().add(const Duration(minutes: 5)),
+      type: DataInfoKeys.email,
     );
-    _otpMemoryStorage[DataInfoKeys.email] = otpMessage;
+
     await _kycClient.generateAuthToken(partnerToken, secretKey);
     final data = await _kycClient.fetchUserInfo(
       keys: [DataInfoKeys.email],
@@ -67,12 +66,11 @@ class OtpService {
     required String userPK,
   }) async {
     final otp = _generateVerificationCode();
-    final otpMessage = OtpMessage(
-      identifier: DataInfoKeys.phone,
+    _otpRepository.createOtpRecord(
+      userPK: userPK,
       otp: otp,
-      expiry: DateTime.now().add(const Duration(minutes: 5)),
+      type: DataInfoKeys.phone,
     );
-    _otpMemoryStorage[DataInfoKeys.phone] = otpMessage;
 
     final data = await _kycClient.fetchUserInfo(
       keys: [DataInfoKeys.phone],
@@ -96,19 +94,20 @@ class OtpService {
     }
   }
 
-  Future<bool> verifyOtp(
-    String identifier,
-    String otp,
-  ) async {
-    final type = identifier.toDataInfoKeys();
-    final otpMessage = _otpMemoryStorage[type];
+  Future<bool> verifyOtp({
+    required String userPK,
+    required String identifier,
+    required String otp,
+  }) async {
+    final otpMessage =
+        await _otpRepository.getOtpRecord(userPK: userPK, type: identifier);
     final isValid = otpMessage != null &&
         otpMessage.otp == otp &&
-        otpMessage.expiry.isAfter(DateTime.now());
+        otpMessage.expiry.dateTime.isAfter(DateTime.now());
     if (isValid) {
       await _kycClient.validateField(
-          type.toValidationResultKeys(), otpMessage.otp);
-      _otpMemoryStorage.remove(type);
+          identifier.toValidationResultKeys(), otpMessage.otp);
+      _otpRepository.deleteOtpRecord(userPK: userPK, type: identifier);
     }
 
     return isValid;
@@ -133,12 +132,12 @@ extension DataInfoKeysExtension on String {
   }
 }
 
-extension DataInfoKeysToValidationResultKeys on DataInfoKeys {
+extension DataInfoKeysToValidationResultKeys on String {
   ValidationResultKeys toValidationResultKeys() {
     switch (this) {
-      case DataInfoKeys.email:
+      case 'email':
         return ValidationResultKeys.email;
-      case DataInfoKeys.phone:
+      case 'phone':
         return ValidationResultKeys.phone;
       default:
         throw ArgumentError('Invalid DataInfoKeys value: $this');

@@ -32,8 +32,9 @@ class _PhoneConfirmationScreenState extends State<PhoneConfirmationScreen> {
   Future<void> _handleConfirm() async {
     final response = await otpClient.verifyOtp(
       VerifyOtpRequest(
-        identifier: 'number',
+        identifier: 'phone',
         otp: _controller.text,
+        userPk: context.read<WalletAppState>().authPublicKey,
       ),
     );
 
