@@ -19,8 +19,20 @@ class OtpRecords extends Table {
   Set<Column> get primaryKey => {userPk, type};
 }
 
+class ValidatedUsers extends Table {
+  const ValidatedUsers();
+
+  TextColumn get userPk => text()();
+  TextColumn get partnerToken => text()();
+  TextColumn get secretKey => text()();
+  TextColumn get partnerPk => text()();
+
+  @override
+  Set<Column> get primaryKey => {userPk, partnerPk};
+}
+
 @DriftDatabase(
-  tables: [OtpRecords],
+  tables: [OtpRecords, ValidatedUsers],
 )
 class AppDatabase extends _$AppDatabase {
   factory AppDatabase() {

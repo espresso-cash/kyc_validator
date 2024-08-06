@@ -24,14 +24,14 @@ class OtpRepository {
     required String otp,
     required DataInfoKeys type,
   }) async {
-    final rateCompanion = OtpRecordsCompanion(
+    final otpCompanion = OtpRecordsCompanion(
       userPk: Value(userPK),
       otp: Value(otp),
       expiry: Value(PgDateTime(DateTime.now().add(const Duration(minutes: 5)))),
       type: Value(type),
     );
 
-    await _db.otpRecords.insertOnConflictUpdate(rateCompanion);
+    await _db.otpRecords.insertOnConflictUpdate(otpCompanion);
   }
 
   Future<void> deleteOtpRecord({
