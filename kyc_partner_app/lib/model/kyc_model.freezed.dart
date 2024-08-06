@@ -31,6 +31,8 @@ mixin _$KycUserInfo {
   String get idNumber => throw _privateConstructorUsedError;
   String? get selfie => throw _privateConstructorUsedError;
   String? get smileIdResult => throw _privateConstructorUsedError;
+  String? get emailVerificationResult => throw _privateConstructorUsedError;
+  String? get phoneVerificationResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +57,9 @@ abstract class $KycUserInfoCopyWith<$Res> {
       String idType,
       String idNumber,
       String? selfie,
-      String? smileIdResult});
+      String? smileIdResult,
+      String? emailVerificationResult,
+      String? phoneVerificationResult});
 }
 
 /// @nodoc
@@ -82,6 +86,8 @@ class _$KycUserInfoCopyWithImpl<$Res, $Val extends KycUserInfo>
     Object? idNumber = null,
     Object? selfie = freezed,
     Object? smileIdResult = freezed,
+    Object? emailVerificationResult = freezed,
+    Object? phoneVerificationResult = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -128,6 +134,14 @@ class _$KycUserInfoCopyWithImpl<$Res, $Val extends KycUserInfo>
           ? _value.smileIdResult
           : smileIdResult // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailVerificationResult: freezed == emailVerificationResult
+          ? _value.emailVerificationResult
+          : emailVerificationResult // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneVerificationResult: freezed == phoneVerificationResult
+          ? _value.phoneVerificationResult
+          : phoneVerificationResult // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -151,7 +165,9 @@ abstract class _$$KycUserInfoImplCopyWith<$Res>
       String idType,
       String idNumber,
       String? selfie,
-      String? smileIdResult});
+      String? smileIdResult,
+      String? emailVerificationResult,
+      String? phoneVerificationResult});
 }
 
 /// @nodoc
@@ -176,6 +192,8 @@ class __$$KycUserInfoImplCopyWithImpl<$Res>
     Object? idNumber = null,
     Object? selfie = freezed,
     Object? smileIdResult = freezed,
+    Object? emailVerificationResult = freezed,
+    Object? phoneVerificationResult = freezed,
   }) {
     return _then(_$KycUserInfoImpl(
       userId: freezed == userId
@@ -222,6 +240,14 @@ class __$$KycUserInfoImplCopyWithImpl<$Res>
           ? _value.smileIdResult
           : smileIdResult // ignore: cast_nullable_to_non_nullable
               as String?,
+      emailVerificationResult: freezed == emailVerificationResult
+          ? _value.emailVerificationResult
+          : emailVerificationResult // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneVerificationResult: freezed == phoneVerificationResult
+          ? _value.phoneVerificationResult
+          : phoneVerificationResult // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -240,7 +266,9 @@ class _$KycUserInfoImpl implements _KycUserInfo {
       required this.idType,
       required this.idNumber,
       this.selfie,
-      this.smileIdResult});
+      this.smileIdResult,
+      this.emailVerificationResult,
+      this.phoneVerificationResult});
 
   factory _$KycUserInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$KycUserInfoImplFromJson(json);
@@ -267,10 +295,14 @@ class _$KycUserInfoImpl implements _KycUserInfo {
   final String? selfie;
   @override
   final String? smileIdResult;
+  @override
+  final String? emailVerificationResult;
+  @override
+  final String? phoneVerificationResult;
 
   @override
   String toString() {
-    return 'KycUserInfo(userId: $userId, jobId: $jobId, firstName: $firstName, middleName: $middleName, lastName: $lastName, dob: $dob, countryCode: $countryCode, idType: $idType, idNumber: $idNumber, selfie: $selfie, smileIdResult: $smileIdResult)';
+    return 'KycUserInfo(userId: $userId, jobId: $jobId, firstName: $firstName, middleName: $middleName, lastName: $lastName, dob: $dob, countryCode: $countryCode, idType: $idType, idNumber: $idNumber, selfie: $selfie, smileIdResult: $smileIdResult, emailVerificationResult: $emailVerificationResult, phoneVerificationResult: $phoneVerificationResult)';
   }
 
   @override
@@ -294,7 +326,13 @@ class _$KycUserInfoImpl implements _KycUserInfo {
                 other.idNumber == idNumber) &&
             (identical(other.selfie, selfie) || other.selfie == selfie) &&
             (identical(other.smileIdResult, smileIdResult) ||
-                other.smileIdResult == smileIdResult));
+                other.smileIdResult == smileIdResult) &&
+            (identical(
+                    other.emailVerificationResult, emailVerificationResult) ||
+                other.emailVerificationResult == emailVerificationResult) &&
+            (identical(
+                    other.phoneVerificationResult, phoneVerificationResult) ||
+                other.phoneVerificationResult == phoneVerificationResult));
   }
 
   @JsonKey(ignore: true)
@@ -311,7 +349,9 @@ class _$KycUserInfoImpl implements _KycUserInfo {
       idType,
       idNumber,
       selfie,
-      smileIdResult);
+      smileIdResult,
+      emailVerificationResult,
+      phoneVerificationResult);
 
   @JsonKey(ignore: true)
   @override
@@ -339,7 +379,9 @@ abstract class _KycUserInfo implements KycUserInfo {
       required final String idType,
       required final String idNumber,
       final String? selfie,
-      final String? smileIdResult}) = _$KycUserInfoImpl;
+      final String? smileIdResult,
+      final String? emailVerificationResult,
+      final String? phoneVerificationResult}) = _$KycUserInfoImpl;
 
   factory _KycUserInfo.fromJson(Map<String, dynamic> json) =
       _$KycUserInfoImpl.fromJson;
@@ -366,6 +408,10 @@ abstract class _KycUserInfo implements KycUserInfo {
   String? get selfie;
   @override
   String? get smileIdResult;
+  @override
+  String? get emailVerificationResult;
+  @override
+  String? get phoneVerificationResult;
   @override
   @JsonKey(ignore: true)
   _$$KycUserInfoImplCopyWith<_$KycUserInfoImpl> get copyWith =>

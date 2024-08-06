@@ -160,6 +160,16 @@ class _UserDetailPageState extends State<UserDetailPage> {
                         title: Text('Smile ID Result'),
                         subtitle: Text(result),
                       ),
+                    if (_userInfo?.emailVerificationResult?.isNotEmpty ?? false)
+                      ListTile(
+                        title: Text('Email'),
+                        subtitle: Text('Verified'),
+                      ),
+                    if (_userInfo?.phoneVerificationResult?.isNotEmpty ?? false)
+                      ListTile(
+                        title: Text('Phone'),
+                        subtitle: Text('Verified'),
+                      ),
                   ],
                 ),
               ),

@@ -19,6 +19,8 @@ _$KycUserInfoImpl _$$KycUserInfoImplFromJson(Map<String, dynamic> json) =>
       idNumber: json['idNumber'] as String,
       selfie: json['selfie'] as String?,
       smileIdResult: json['smileIdResult'] as String?,
+      emailVerificationResult: json['emailVerificationResult'] as String?,
+      phoneVerificationResult: json['phoneVerificationResult'] as String?,
     );
 
 Map<String, dynamic> _$$KycUserInfoImplToJson(_$KycUserInfoImpl instance) =>
@@ -34,6 +36,8 @@ Map<String, dynamic> _$$KycUserInfoImplToJson(_$KycUserInfoImpl instance) =>
       'idNumber': instance.idNumber,
       'selfie': instance.selfie,
       'smileIdResult': instance.smileIdResult,
+      'emailVerificationResult': instance.emailVerificationResult,
+      'phoneVerificationResult': instance.phoneVerificationResult,
     };
 
 _$KycUsersImpl _$$KycUsersImplFromJson(Map<String, dynamic> json) =>

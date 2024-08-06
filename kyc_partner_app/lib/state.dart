@@ -80,7 +80,7 @@ class PartnerAppState extends ChangeNotifier {
         DataInfoKeys.dateOfBirth,
         DataInfoKeys.countryCode,
         DataInfoKeys.idType,
-        DataInfoKeys.idNumber
+        DataInfoKeys.idNumber,
       ],
       userPK: user.userPK,
       secretKey: user.secretKey,
@@ -92,12 +92,32 @@ class PartnerAppState extends ChangeNotifier {
     );
     final kyc = KycUserInfo.fromDataInfoKeys(data);
 
-    final result = await _partnerClient.getValidationResult(
+    final smileIdResult = await _partnerClient.getValidationResult(
       key: ValidationResultKeys.smileId,
-      validatorPK: 'HHV5joB6D4c2pigVZcQ9RY5suDMvAiHBLLBCFqmWuM4E',
+      validatorPK: _validatorPK,
       secretKey: user.secretKey,
     );
 
-    return kyc.copyWith(selfie: base64Encode(selfie), smileIdResult: result);
+    //TODO(vsumin): handle when result is empty String
+    final emailVerificationResult = await _partnerClient.getValidationResult(
+      key: ValidationResultKeys.email,
+      validatorPK: _validatorPK,
+      secretKey: user.secretKey,
+    );
+
+    final phoneVerificationResult = await _partnerClient.getValidationResult(
+      key: ValidationResultKeys.phone,
+      validatorPK: _validatorPK,
+      secretKey: user.secretKey,
+    );
+
+    return kyc.copyWith(
+      selfie: base64Encode(selfie),
+      smileIdResult: smileIdResult,
+      emailVerificationResult: emailVerificationResult,
+      phoneVerificationResult: phoneVerificationResult,
+    );
   }
 }
+
+const _validatorPK = 'HHV5joB6D4c2pigVZcQ9RY5suDMvAiHBLLBCFqmWuM4E';

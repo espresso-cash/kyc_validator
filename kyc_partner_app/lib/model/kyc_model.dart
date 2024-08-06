@@ -20,6 +20,8 @@ class KycUserInfo with _$KycUserInfo {
     required String idNumber,
     String? selfie,
     String? smileIdResult,
+    String? emailVerificationResult,
+    String? phoneVerificationResult,
   }) = _KycUserInfo;
 
   factory KycUserInfo.fromJson(Map<String, dynamic> json) =>
