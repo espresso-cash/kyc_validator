@@ -51,9 +51,8 @@ const SendUserDataResponse$json = {
 };
 
 /// Descriptor for `SendUserDataResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sendUserDataResponseDescriptor =
-    $convert.base64Decode(
-        'ChRTZW5kVXNlckRhdGFSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
+final $typed_data.Uint8List sendUserDataResponseDescriptor = $convert.base64Decode(
+    'ChRTZW5kVXNlckRhdGFSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
 
 @$core.Deprecated('Use fetchPartnerUsersRequestDescriptor instead')
 const FetchPartnerUsersRequest$json = {
@@ -64,10 +63,9 @@ const FetchPartnerUsersRequest$json = {
 };
 
 /// Descriptor for `FetchPartnerUsersRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List fetchPartnerUsersRequestDescriptor =
-    $convert.base64Decode(
-        'ChhGZXRjaFBhcnRuZXJVc2Vyc1JlcXVlc3QSHAoJcGFydG5lclBrGAEgASgJUglwYXJ0bmVyUG'
-        's=');
+final $typed_data.Uint8List fetchPartnerUsersRequestDescriptor = $convert.base64Decode(
+    'ChhGZXRjaFBhcnRuZXJVc2Vyc1JlcXVlc3QSHAoJcGFydG5lclBrGAEgASgJUglwYXJ0bmVyUG'
+    's=');
 
 @$core.Deprecated('Use fetchPartnerUsersResponseDescriptor instead')
 const FetchPartnerUsersResponse$json = {
@@ -78,7 +76,7 @@ const FetchPartnerUsersResponse$json = {
 };
 
 /// Descriptor for `FetchPartnerUsersResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List fetchPartnerUsersResponseDescriptor =
-    $convert.base64Decode(
-        'ChlGZXRjaFBhcnRuZXJVc2Vyc1Jlc3BvbnNlEh8KBXVzZXJzGAEgAygLMgkua3ljLlVzZXJSBX'
-        'VzZXJz');
+final $typed_data.Uint8List fetchPartnerUsersResponseDescriptor = $convert.base64Decode(
+    'ChlGZXRjaFBhcnRuZXJVc2Vyc1Jlc3BvbnNlEh8KBXVzZXJzGAEgAygLMgkua3ljLlVzZXJSBX'
+    'VzZXJz');
+
