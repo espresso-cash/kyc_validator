@@ -44,8 +44,7 @@ class WalletAppState extends ChangeNotifier {
 
     final publicKey = _wallet!.publicKey.toString();
 
-    await _client.init();
-    await _client.initStorage(walletAddress: publicKey);
+    await _client.init(walletAddress: publicKey);
 
     _userPublicKey = publicKey;
     _rawSecretKey = _client.rawSecretKey;
