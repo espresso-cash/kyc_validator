@@ -13,8 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class UserData extends $pb.GeneratedMessage {
-  factory UserData({
+class User extends $pb.GeneratedMessage {
+  factory User({
     $core.String? secretKey,
     $core.String? partnerToken,
     $core.String? userPk,
@@ -31,11 +31,11 @@ class UserData extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  UserData._() : super();
-  factory UserData.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UserData.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  User._() : super();
+  factory User.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory User.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserData', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'User', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'secretKey', protoName: 'secretKey')
     ..aOS(2, _omitFieldNames ? '' : 'partnerToken', protoName: 'partnerToken')
     ..aOS(3, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
@@ -46,22 +46,22 @@ class UserData extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  UserData clone() => UserData()..mergeFromMessage(this);
+  User clone() => User()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  UserData copyWith(void Function(UserData) updates) => super.copyWith((message) => updates(message as UserData)) as UserData;
+  User copyWith(void Function(User) updates) => super.copyWith((message) => updates(message as User)) as User;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static UserData create() => UserData._();
-  UserData createEmptyInstance() => create();
-  static $pb.PbList<UserData> createRepeated() => $pb.PbList<UserData>();
+  static User create() => User._();
+  User createEmptyInstance() => create();
+  static $pb.PbList<User> createRepeated() => $pb.PbList<User>();
   @$core.pragma('dart2js:noInline')
-  static UserData getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserData>(create);
-  static UserData? _defaultInstance;
+  static User getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<User>(create);
+  static User? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get secretKey => $_getSZ(0);
@@ -91,26 +91,26 @@ class UserData extends $pb.GeneratedMessage {
   void clearUserPk() => clearField(3);
 }
 
-class SendDataRequest extends $pb.GeneratedMessage {
-  factory SendDataRequest({
-    UserData? userData,
+class SendUserDataRequest extends $pb.GeneratedMessage {
+  factory SendUserDataRequest({
+    User? user,
     $core.String? partnerPk,
   }) {
     final $result = create();
-    if (userData != null) {
-      $result.userData = userData;
+    if (user != null) {
+      $result.user = user;
     }
     if (partnerPk != null) {
       $result.partnerPk = partnerPk;
     }
     return $result;
   }
-  SendDataRequest._() : super();
-  factory SendDataRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SendDataRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  SendUserDataRequest._() : super();
+  factory SendUserDataRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendUserDataRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendDataRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
-    ..aOM<UserData>(1, _omitFieldNames ? '' : 'userData', protoName: 'userData', subBuilder: UserData.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendUserDataRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
+    ..aOM<User>(1, _omitFieldNames ? '' : 'user', subBuilder: User.create)
     ..aOS(2, _omitFieldNames ? '' : 'partnerPk', protoName: 'partnerPk')
     ..hasRequiredFields = false
   ;
@@ -119,33 +119,33 @@ class SendDataRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  SendDataRequest clone() => SendDataRequest()..mergeFromMessage(this);
+  SendUserDataRequest clone() => SendUserDataRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SendDataRequest copyWith(void Function(SendDataRequest) updates) => super.copyWith((message) => updates(message as SendDataRequest)) as SendDataRequest;
+  SendUserDataRequest copyWith(void Function(SendUserDataRequest) updates) => super.copyWith((message) => updates(message as SendUserDataRequest)) as SendUserDataRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static SendDataRequest create() => SendDataRequest._();
-  SendDataRequest createEmptyInstance() => create();
-  static $pb.PbList<SendDataRequest> createRepeated() => $pb.PbList<SendDataRequest>();
+  static SendUserDataRequest create() => SendUserDataRequest._();
+  SendUserDataRequest createEmptyInstance() => create();
+  static $pb.PbList<SendUserDataRequest> createRepeated() => $pb.PbList<SendUserDataRequest>();
   @$core.pragma('dart2js:noInline')
-  static SendDataRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendDataRequest>(create);
-  static SendDataRequest? _defaultInstance;
+  static SendUserDataRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendUserDataRequest>(create);
+  static SendUserDataRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  UserData get userData => $_getN(0);
+  User get user => $_getN(0);
   @$pb.TagNumber(1)
-  set userData(UserData v) { setField(1, v); }
+  set user(User v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUserData() => $_has(0);
+  $core.bool hasUser() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUserData() => clearField(1);
+  void clearUser() => clearField(1);
   @$pb.TagNumber(1)
-  UserData ensureUserData() => $_ensure(0);
+  User ensureUser() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get partnerPk => $_getSZ(1);
@@ -157,8 +157,8 @@ class SendDataRequest extends $pb.GeneratedMessage {
   void clearPartnerPk() => clearField(2);
 }
 
-class SendDataResponse extends $pb.GeneratedMessage {
-  factory SendDataResponse({
+class SendUserDataResponse extends $pb.GeneratedMessage {
+  factory SendUserDataResponse({
     $core.bool? success,
   }) {
     final $result = create();
@@ -167,11 +167,11 @@ class SendDataResponse extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  SendDataResponse._() : super();
-  factory SendDataResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SendDataResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  SendUserDataResponse._() : super();
+  factory SendUserDataResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SendUserDataResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendDataResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendUserDataResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'success')
     ..hasRequiredFields = false
   ;
@@ -180,22 +180,22 @@ class SendDataResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  SendDataResponse clone() => SendDataResponse()..mergeFromMessage(this);
+  SendUserDataResponse clone() => SendUserDataResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SendDataResponse copyWith(void Function(SendDataResponse) updates) => super.copyWith((message) => updates(message as SendDataResponse)) as SendDataResponse;
+  SendUserDataResponse copyWith(void Function(SendUserDataResponse) updates) => super.copyWith((message) => updates(message as SendUserDataResponse)) as SendUserDataResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static SendDataResponse create() => SendDataResponse._();
-  SendDataResponse createEmptyInstance() => create();
-  static $pb.PbList<SendDataResponse> createRepeated() => $pb.PbList<SendDataResponse>();
+  static SendUserDataResponse create() => SendUserDataResponse._();
+  SendUserDataResponse createEmptyInstance() => create();
+  static $pb.PbList<SendUserDataResponse> createRepeated() => $pb.PbList<SendUserDataResponse>();
   @$core.pragma('dart2js:noInline')
-  static SendDataResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendDataResponse>(create);
-  static SendDataResponse? _defaultInstance;
+  static SendUserDataResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendUserDataResponse>(create);
+  static SendUserDataResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get success => $_getBF(0);
@@ -207,8 +207,8 @@ class SendDataResponse extends $pb.GeneratedMessage {
   void clearSuccess() => clearField(1);
 }
 
-class FetchUserRequest extends $pb.GeneratedMessage {
-  factory FetchUserRequest({
+class FetchPartnerUsersRequest extends $pb.GeneratedMessage {
+  factory FetchPartnerUsersRequest({
     $core.String? partnerPk,
   }) {
     final $result = create();
@@ -217,11 +217,11 @@ class FetchUserRequest extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  FetchUserRequest._() : super();
-  factory FetchUserRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory FetchUserRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchPartnerUsersRequest._() : super();
+  factory FetchPartnerUsersRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchPartnerUsersRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FetchUserRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FetchPartnerUsersRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'partnerPk', protoName: 'partnerPk')
     ..hasRequiredFields = false
   ;
@@ -230,22 +230,22 @@ class FetchUserRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  FetchUserRequest clone() => FetchUserRequest()..mergeFromMessage(this);
+  FetchPartnerUsersRequest clone() => FetchPartnerUsersRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  FetchUserRequest copyWith(void Function(FetchUserRequest) updates) => super.copyWith((message) => updates(message as FetchUserRequest)) as FetchUserRequest;
+  FetchPartnerUsersRequest copyWith(void Function(FetchPartnerUsersRequest) updates) => super.copyWith((message) => updates(message as FetchPartnerUsersRequest)) as FetchPartnerUsersRequest;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static FetchUserRequest create() => FetchUserRequest._();
-  FetchUserRequest createEmptyInstance() => create();
-  static $pb.PbList<FetchUserRequest> createRepeated() => $pb.PbList<FetchUserRequest>();
+  static FetchPartnerUsersRequest create() => FetchPartnerUsersRequest._();
+  FetchPartnerUsersRequest createEmptyInstance() => create();
+  static $pb.PbList<FetchPartnerUsersRequest> createRepeated() => $pb.PbList<FetchPartnerUsersRequest>();
   @$core.pragma('dart2js:noInline')
-  static FetchUserRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FetchUserRequest>(create);
-  static FetchUserRequest? _defaultInstance;
+  static FetchPartnerUsersRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FetchPartnerUsersRequest>(create);
+  static FetchPartnerUsersRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get partnerPk => $_getSZ(0);
@@ -257,22 +257,22 @@ class FetchUserRequest extends $pb.GeneratedMessage {
   void clearPartnerPk() => clearField(1);
 }
 
-class FetchUserResponse extends $pb.GeneratedMessage {
-  factory FetchUserResponse({
-    $core.Iterable<UserData>? userData,
+class FetchPartnerUsersResponse extends $pb.GeneratedMessage {
+  factory FetchPartnerUsersResponse({
+    $core.Iterable<User>? users,
   }) {
     final $result = create();
-    if (userData != null) {
-      $result.userData.addAll(userData);
+    if (users != null) {
+      $result.users.addAll(users);
     }
     return $result;
   }
-  FetchUserResponse._() : super();
-  factory FetchUserResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory FetchUserResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  FetchPartnerUsersResponse._() : super();
+  factory FetchPartnerUsersResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FetchPartnerUsersResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FetchUserResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
-    ..pc<UserData>(1, _omitFieldNames ? '' : 'userData', $pb.PbFieldType.PM, protoName: 'userData', subBuilder: UserData.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FetchPartnerUsersResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
+    ..pc<User>(1, _omitFieldNames ? '' : 'users', $pb.PbFieldType.PM, subBuilder: User.create)
     ..hasRequiredFields = false
   ;
 
@@ -280,25 +280,25 @@ class FetchUserResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  FetchUserResponse clone() => FetchUserResponse()..mergeFromMessage(this);
+  FetchPartnerUsersResponse clone() => FetchPartnerUsersResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  FetchUserResponse copyWith(void Function(FetchUserResponse) updates) => super.copyWith((message) => updates(message as FetchUserResponse)) as FetchUserResponse;
+  FetchPartnerUsersResponse copyWith(void Function(FetchPartnerUsersResponse) updates) => super.copyWith((message) => updates(message as FetchPartnerUsersResponse)) as FetchPartnerUsersResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static FetchUserResponse create() => FetchUserResponse._();
-  FetchUserResponse createEmptyInstance() => create();
-  static $pb.PbList<FetchUserResponse> createRepeated() => $pb.PbList<FetchUserResponse>();
+  static FetchPartnerUsersResponse create() => FetchPartnerUsersResponse._();
+  FetchPartnerUsersResponse createEmptyInstance() => create();
+  static $pb.PbList<FetchPartnerUsersResponse> createRepeated() => $pb.PbList<FetchPartnerUsersResponse>();
   @$core.pragma('dart2js:noInline')
-  static FetchUserResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FetchUserResponse>(create);
-  static FetchUserResponse? _defaultInstance;
+  static FetchPartnerUsersResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FetchPartnerUsersResponse>(create);
+  static FetchPartnerUsersResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<UserData> get userData => $_getList(0);
+  $core.List<User> get users => $_getList(0);
 }
 
 
