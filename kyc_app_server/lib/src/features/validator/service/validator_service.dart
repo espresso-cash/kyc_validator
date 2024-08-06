@@ -32,8 +32,7 @@ class ValidatorService {
       userPK: userAuthPK,
     );
 
-    //TODO(JE): fix smile upload
-    // await _sendToSmile(user.copyWith(userId: userPublicKey));
+    await _sendToSmile(user.copyWith(userId: userPublicKey));
 
     await _kycClient.setValidationResult('success');
   }
@@ -57,7 +56,7 @@ class ValidatorService {
             'FullName':
                 '${user.firstName} ${user.middleName}  ${user.lastName}',
             'DOB': dob,
-            'Photo': user.selfie!,
+            //'Photo': user.selfie!,
           },
         ),
       );
