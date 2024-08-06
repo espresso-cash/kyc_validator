@@ -92,7 +92,7 @@ class _KycPageState extends State<KycPage> {
             ),
           );
 
-          await state.generateValidatorToken(partnerAuthPk);
+          await state.generatePartnerToken(partnerAuthPk);
 
           await partnerClient.sendUserData(
             SendUserDataRequest(
