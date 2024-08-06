@@ -31,8 +31,12 @@ mixin _$KycUserInfo {
   String get idNumber => throw _privateConstructorUsedError;
   String? get selfie => throw _privateConstructorUsedError;
 
+  /// Serializes this KycUserInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KycUserInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KycUserInfoCopyWith<KycUserInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$KycUserInfoCopyWithImpl<$Res, $Val extends KycUserInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KycUserInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +160,8 @@ class __$$KycUserInfoImplCopyWithImpl<$Res>
       _$KycUserInfoImpl _value, $Res Function(_$KycUserInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KycUserInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -279,12 +287,14 @@ class _$KycUserInfoImpl implements _KycUserInfo {
             (identical(other.selfie, selfie) || other.selfie == selfie));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userId, jobId, firstName,
       middleName, lastName, dob, countryCode, idType, idNumber, selfie);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KycUserInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KycUserInfoImplCopyWith<_$KycUserInfoImpl> get copyWith =>
@@ -334,8 +344,11 @@ abstract class _KycUserInfo implements KycUserInfo {
   String get idNumber;
   @override
   String? get selfie;
+
+  /// Create a copy of KycUserInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KycUserInfoImplCopyWith<_$KycUserInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

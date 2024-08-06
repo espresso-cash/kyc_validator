@@ -28,8 +28,12 @@ mixin _$UploadRequestDto {
   String get callbackUrl => throw _privateConstructorUsedError;
   Map<String, dynamic> get partnerParams => throw _privateConstructorUsedError;
 
+  /// Serializes this UploadRequestDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UploadRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UploadRequestDtoCopyWith<UploadRequestDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$UploadRequestDtoCopyWithImpl<$Res, $Val extends UploadRequestDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UploadRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +129,8 @@ class __$$UploadRequestDtoImplCopyWithImpl<$Res>
       $Res Function(_$UploadRequestDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UploadRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,7 +239,7 @@ class _$UploadRequestDtoImpl implements _UploadRequestDto {
                 .equals(other._partnerParams, _partnerParams));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -242,7 +250,9 @@ class _$UploadRequestDtoImpl implements _UploadRequestDto {
       callbackUrl,
       const DeepCollectionEquality().hash(_partnerParams));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UploadRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UploadRequestDtoImplCopyWith<_$UploadRequestDtoImpl> get copyWith =>
@@ -282,8 +292,11 @@ abstract class _UploadRequestDto implements UploadRequestDto {
   String get callbackUrl;
   @override
   Map<String, dynamic> get partnerParams;
+
+  /// Create a copy of UploadRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UploadRequestDtoImplCopyWith<_$UploadRequestDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -300,8 +313,12 @@ mixin _$UploadResponseDto {
   String get smileJobId => throw _privateConstructorUsedError;
   String get uploadUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this UploadResponseDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UploadResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UploadResponseDtoCopyWith<UploadResponseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -330,6 +347,8 @@ class _$UploadResponseDtoCopyWithImpl<$Res, $Val extends UploadResponseDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UploadResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,6 +407,8 @@ class __$$UploadResponseDtoImplCopyWithImpl<$Res>
       $Res Function(_$UploadResponseDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UploadResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -467,12 +488,14 @@ class _$UploadResponseDtoImpl implements _UploadResponseDto {
                 other.uploadUrl == uploadUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, cameraConfig, code, refId, smileJobId, uploadUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UploadResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UploadResponseDtoImplCopyWith<_$UploadResponseDtoImpl> get copyWith =>
@@ -508,8 +531,11 @@ abstract class _UploadResponseDto implements UploadResponseDto {
   String get smileJobId;
   @override
   String get uploadUrl;
+
+  /// Create a copy of UploadResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UploadResponseDtoImplCopyWith<_$UploadResponseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -525,8 +551,12 @@ mixin _$JobStatusRequestDto {
   bool get imageLinks => throw _privateConstructorUsedError;
   bool get history => throw _privateConstructorUsedError;
 
+  /// Serializes this JobStatusRequestDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JobStatusRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $JobStatusRequestDtoCopyWith<JobStatusRequestDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -550,6 +580,8 @@ class _$JobStatusRequestDtoCopyWithImpl<$Res, $Val extends JobStatusRequestDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of JobStatusRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -598,6 +630,8 @@ class __$$JobStatusRequestDtoImplCopyWithImpl<$Res>
       $Res Function(_$JobStatusRequestDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JobStatusRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -668,12 +702,14 @@ class _$JobStatusRequestDtoImpl implements _JobStatusRequestDto {
             (identical(other.history, history) || other.history == history));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, jobId, userId, imageLinks, history);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JobStatusRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JobStatusRequestDtoImplCopyWith<_$JobStatusRequestDtoImpl> get copyWith =>
@@ -706,8 +742,11 @@ abstract class _JobStatusRequestDto implements JobStatusRequestDto {
   bool get imageLinks;
   @override
   bool get history;
+
+  /// Create a copy of JobStatusRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JobStatusRequestDtoImplCopyWith<_$JobStatusRequestDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -727,8 +766,12 @@ mixin _$JobStatusResponseDto {
   List<Map<String, dynamic>>? get history => throw _privateConstructorUsedError;
   Map<String, dynamic>? get imageLinks => throw _privateConstructorUsedError;
 
+  /// Serializes this JobStatusResponseDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JobStatusResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $JobStatusResponseDtoCopyWith<JobStatusResponseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -761,6 +804,8 @@ class _$JobStatusResponseDtoCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of JobStatusResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -837,6 +882,8 @@ class __$$JobStatusResponseDtoImplCopyWithImpl<$Res>
       $Res Function(_$JobStatusResponseDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JobStatusResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -969,7 +1016,7 @@ class _$JobStatusResponseDtoImpl implements _JobStatusResponseDto {
                 .equals(other._imageLinks, _imageLinks));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -982,7 +1029,9 @@ class _$JobStatusResponseDtoImpl implements _JobStatusResponseDto {
       const DeepCollectionEquality().hash(_history),
       const DeepCollectionEquality().hash(_imageLinks));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JobStatusResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JobStatusResponseDtoImplCopyWith<_$JobStatusResponseDtoImpl>
@@ -1029,8 +1078,11 @@ abstract class _JobStatusResponseDto implements JobStatusResponseDto {
   List<Map<String, dynamic>>? get history;
   @override
   Map<String, dynamic>? get imageLinks;
+
+  /// Create a copy of JobStatusResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JobStatusResponseDtoImplCopyWith<_$JobStatusResponseDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

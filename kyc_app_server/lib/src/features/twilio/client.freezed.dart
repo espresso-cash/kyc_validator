@@ -24,8 +24,12 @@ mixin _$SendSmsRequestDto {
   String get from => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
 
+  /// Serializes this SendSmsRequestDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SendSmsRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SendSmsRequestDtoCopyWith<SendSmsRequestDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$SendSmsRequestDtoCopyWithImpl<$Res, $Val extends SendSmsRequestDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SendSmsRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$SendSmsRequestDtoImplCopyWithImpl<$Res>
       $Res Function(_$SendSmsRequestDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SendSmsRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,11 +156,13 @@ class _$SendSmsRequestDtoImpl implements _SendSmsRequestDto {
             (identical(other.body, body) || other.body == body));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, to, from, body);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SendSmsRequestDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendSmsRequestDtoImplCopyWith<_$SendSmsRequestDtoImpl> get copyWith =>
@@ -182,8 +192,11 @@ abstract class _SendSmsRequestDto implements SendSmsRequestDto {
   String get from;
   @override
   String get body;
+
+  /// Create a copy of SendSmsRequestDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendSmsRequestDtoImplCopyWith<_$SendSmsRequestDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -202,8 +215,12 @@ mixin _$SendSmsResponseDto {
   String? get errorCode => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
+  /// Serializes this SendSmsResponseDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SendSmsResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SendSmsResponseDtoCopyWith<SendSmsResponseDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -234,6 +251,8 @@ class _$SendSmsResponseDtoCopyWithImpl<$Res, $Val extends SendSmsResponseDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SendSmsResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -304,6 +323,8 @@ class __$$SendSmsResponseDtoImplCopyWithImpl<$Res>
       $Res Function(_$SendSmsResponseDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SendSmsResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -401,12 +422,14 @@ class _$SendSmsResponseDtoImpl implements _SendSmsResponseDto {
                 other.errorMessage == errorMessage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, accountSid, status, to, from, body, errorCode, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SendSmsResponseDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendSmsResponseDtoImplCopyWith<_$SendSmsResponseDtoImpl> get copyWith =>
@@ -448,8 +471,11 @@ abstract class _SendSmsResponseDto implements SendSmsResponseDto {
   String? get errorCode;
   @override
   String? get errorMessage;
+
+  /// Create a copy of SendSmsResponseDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendSmsResponseDtoImplCopyWith<_$SendSmsResponseDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

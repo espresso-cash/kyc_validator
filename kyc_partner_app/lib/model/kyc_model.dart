@@ -19,6 +19,7 @@ class KycUserInfo with _$KycUserInfo {
     required String idType,
     required String idNumber,
     String? selfie,
+    String? smileIdResult,
   }) = _KycUserInfo;
 
   factory KycUserInfo.fromJson(Map<String, dynamic> json) =>

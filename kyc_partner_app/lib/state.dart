@@ -12,13 +12,11 @@ class PartnerAppState extends ChangeNotifier {
   late KycPartnerClient _partnerClient;
 
   List<KycUsers> _users = [];
-  KycUserInfo? _selectedUser;
   bool _isLoading = false;
 
   PartnerAppState(this._backendClient);
 
   List<KycUsers> get users => _users;
-  KycUserInfo? get selectedUser => _selectedUser;
   bool get isLoading => _isLoading;
 
   late Ed25519HDPublicKey _publicKey;
@@ -69,45 +67,37 @@ class PartnerAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> fetchUser(KycUsers user) async {
-    _isLoading = true;
-    notifyListeners();
+  Future<KycUserInfo> fetchUser(KycUsers user) async {
+    await _partnerClient.init(
+      partnerToken: user.partnerToken,
+      secretKey: user.secretKey,
+    );
+    final data = await _partnerClient.getData(
+      keys: [
+        DataInfoKeys.firstName,
+        DataInfoKeys.middleName,
+        DataInfoKeys.lastName,
+        DataInfoKeys.dateOfBirth,
+        DataInfoKeys.countryCode,
+        DataInfoKeys.idType,
+        DataInfoKeys.idNumber
+      ],
+      userPK: user.userPK,
+      secretKey: user.secretKey,
+    );
+    final selfie = await _partnerClient.download(
+      key: DataFileKeys.photo,
+      userPK: user.userPK,
+      secretKey: user.secretKey,
+    );
+    final kyc = KycUserInfo.fromDataInfoKeys(data);
 
-    try {
-      await _partnerClient.init(
-        partnerToken: user.partnerToken,
-        secretKey: user.secretKey,
-      );
+    final result = await _partnerClient.getValidationResult(
+      key: ValidationResultKeys.smileId,
+      validatorPK: 'HHV5joB6D4c2pigVZcQ9RY5suDMvAiHBLLBCFqmWuM4E',
+      secretKey: user.secretKey,
+    );
 
-      final data = await _partnerClient.getData(
-        keys: [
-          DataInfoKeys.jobId,
-          DataInfoKeys.firstName,
-          DataInfoKeys.middleName,
-          DataInfoKeys.lastName,
-          DataInfoKeys.dateOfBirth,
-          DataInfoKeys.countryCode,
-          DataInfoKeys.idType,
-          DataInfoKeys.idNumber
-        ],
-        userPK: user.userPK,
-        secretKey: user.secretKey,
-      );
-
-      final selfie = await _partnerClient.download(
-        key: DataFileKeys.photo,
-        userPK: user.userPK,
-        secretKey: user.secretKey,
-      );
-
-      final kyc = KycUserInfo.fromDataInfoKeys(data);
-
-      _selectedUser = kyc.copyWith(selfie: base64Encode(selfie));
-    } catch (e) {
-      print('Error fetching user data: $e');
-    }
-
-    _isLoading = false;
-    notifyListeners();
+    return kyc.copyWith(selfie: base64Encode(selfie), smileIdResult: result);
   }
 }

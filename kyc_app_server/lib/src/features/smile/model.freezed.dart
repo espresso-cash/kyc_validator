@@ -25,8 +25,12 @@ mixin _$InfoData {
   IdInfo get idInfo => throw _privateConstructorUsedError;
   List<ImageDto> get images => throw _privateConstructorUsedError;
 
+  /// Serializes this InfoData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InfoDataCopyWith<InfoData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$InfoDataCopyWithImpl<$Res, $Val extends InfoData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +84,8 @@ class _$InfoDataCopyWithImpl<$Res, $Val extends InfoData>
     ) as $Val);
   }
 
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PackageInformationCopyWith<$Res> get packageInformation {
@@ -87,6 +95,8 @@ class _$InfoDataCopyWithImpl<$Res, $Val extends InfoData>
     });
   }
 
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $IdInfoCopyWith<$Res> get idInfo {
@@ -123,6 +133,8 @@ class __$$InfoDataImplCopyWithImpl<$Res>
       _$InfoDataImpl _value, $Res Function(_$InfoDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -190,12 +202,14 @@ class _$InfoDataImpl extends _InfoData {
             const DeepCollectionEquality().equals(other._images, _images));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, packageInformation, idInfo,
       const DeepCollectionEquality().hash(_images));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InfoDataImplCopyWith<_$InfoDataImpl> get copyWith =>
@@ -225,8 +239,11 @@ abstract class _InfoData extends InfoData {
   IdInfo get idInfo;
   @override
   List<ImageDto> get images;
+
+  /// Create a copy of InfoData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InfoDataImplCopyWith<_$InfoDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -246,8 +263,12 @@ mixin _$IdInfo {
   String get firstName => throw _privateConstructorUsedError;
   String get middleName => throw _privateConstructorUsedError;
 
+  /// Serializes this IdInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IdInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IdInfoCopyWith<IdInfo> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -277,6 +298,8 @@ class _$IdInfoCopyWithImpl<$Res, $Val extends IdInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IdInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -352,6 +375,8 @@ class __$$IdInfoImplCopyWithImpl<$Res>
       _$IdInfoImpl _value, $Res Function(_$IdInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IdInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,12 +484,14 @@ class _$IdInfoImpl implements _IdInfo {
                 other.middleName == middleName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, dob, country, entered, idType,
       idNumber, lastName, firstName, middleName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IdInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IdInfoImplCopyWith<_$IdInfoImpl> get copyWith =>
@@ -507,8 +534,11 @@ abstract class _IdInfo implements IdInfo {
   String get firstName;
   @override
   String get middleName;
+
+  /// Create a copy of IdInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IdInfoImplCopyWith<_$IdInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -523,8 +553,12 @@ mixin _$ImageDto {
   String get image => throw _privateConstructorUsedError;
   String get fileName => throw _privateConstructorUsedError;
 
+  /// Serializes this ImageDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ImageDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImageDtoCopyWith<ImageDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -547,6 +581,8 @@ class _$ImageDtoCopyWithImpl<$Res, $Val extends ImageDto>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImageDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -590,6 +626,8 @@ class __$$ImageDtoImplCopyWithImpl<$Res>
       _$ImageDtoImpl _value, $Res Function(_$ImageDtoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImageDto
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -650,11 +688,13 @@ class _$ImageDtoImpl implements _ImageDto {
                 other.fileName == fileName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, imageTypeId, image, fileName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageDto
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImageDtoImplCopyWith<_$ImageDtoImpl> get copyWith =>
@@ -683,8 +723,11 @@ abstract class _ImageDto implements ImageDto {
   String get image;
   @override
   String get fileName;
+
+  /// Create a copy of ImageDto
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImageDtoImplCopyWith<_$ImageDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -697,8 +740,12 @@ PackageInformation _$PackageInformationFromJson(Map<String, dynamic> json) {
 mixin _$PackageInformation {
   ApiVersion get apiVersion => throw _privateConstructorUsedError;
 
+  /// Serializes this PackageInformation to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PackageInformation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PackageInformationCopyWith<PackageInformation> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -724,6 +771,8 @@ class _$PackageInformationCopyWithImpl<$Res, $Val extends PackageInformation>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PackageInformation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -737,6 +786,8 @@ class _$PackageInformationCopyWithImpl<$Res, $Val extends PackageInformation>
     ) as $Val);
   }
 
+  /// Create a copy of PackageInformation
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ApiVersionCopyWith<$Res> get apiVersion {
@@ -768,6 +819,8 @@ class __$$PackageInformationImplCopyWithImpl<$Res>
       $Res Function(_$PackageInformationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PackageInformation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -808,11 +861,13 @@ class _$PackageInformationImpl implements _PackageInformation {
                 other.apiVersion == apiVersion));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, apiVersion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PackageInformation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PackageInformationImplCopyWith<_$PackageInformationImpl> get copyWith =>
@@ -836,8 +891,11 @@ abstract class _PackageInformation implements PackageInformation {
 
   @override
   ApiVersion get apiVersion;
+
+  /// Create a copy of PackageInformation
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PackageInformationImplCopyWith<_$PackageInformationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -852,8 +910,12 @@ mixin _$ApiVersion {
   int get majorVersion => throw _privateConstructorUsedError;
   int get minorVersion => throw _privateConstructorUsedError;
 
+  /// Serializes this ApiVersion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApiVersion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApiVersionCopyWith<ApiVersion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -877,6 +939,8 @@ class _$ApiVersionCopyWithImpl<$Res, $Val extends ApiVersion>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApiVersion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -920,6 +984,8 @@ class __$$ApiVersionImplCopyWithImpl<$Res>
       _$ApiVersionImpl _value, $Res Function(_$ApiVersionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApiVersion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -981,12 +1047,14 @@ class _$ApiVersionImpl implements _ApiVersion {
                 other.minorVersion == minorVersion));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, buildNumber, majorVersion, minorVersion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApiVersion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApiVersionImplCopyWith<_$ApiVersionImpl> get copyWith =>
@@ -1015,8 +1083,11 @@ abstract class _ApiVersion implements ApiVersion {
   int get majorVersion;
   @override
   int get minorVersion;
+
+  /// Create a copy of ApiVersion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApiVersionImplCopyWith<_$ApiVersionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

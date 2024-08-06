@@ -6,7 +6,6 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:kyc_app_server/config.dart';
 import 'package:kyc_app_server/src/features/smile/interceptor.dart';
 import 'package:retrofit/retrofit.dart';
 

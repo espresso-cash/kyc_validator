@@ -65,5 +65,5 @@ class AppDatabase extends _$AppDatabase {
   int get schemaVersion => 6;
 }
 
-final dbHost = Platform.environment['DB_HOST'] ?? '';
-final dbPassword = Platform.environment['DB_PASSWORD'] ?? '';
+final dbHost = Platform.environment['DB_HOST'] ?? 'localhost';
+final dbPassword = Platform.environment['DB_PASSWORD'] ?? 'password';
