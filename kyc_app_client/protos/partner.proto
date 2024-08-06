@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package kyc;
+
+message UserData {
+  string secretKey = 1;
+  string partnerToken = 2;
+  string userPk = 3;
+}
+
+message SendDataRequest{
+  UserData userData = 1;
+  string partnerPk = 2;
+}
+
+message SendDataResponse {
+  bool success = 1;
+}
+
+message FetchUserRequest{
+  string partnerPk = 1;
+}
+
+message FetchUserResponse {
+  repeated UserData userData = 1;
+}
+
+service PartnerService {
+  rpc SendUserData (SendDataRequest) returns (SendDataResponse); 
+  rpc FetchUserData (FetchUserRequest) returns (FetchUserResponse);
+}
