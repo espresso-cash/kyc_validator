@@ -58,7 +58,7 @@ class PartnerAppPage extends StatelessWidget {
                     final user = state.users[index];
                     return ListTile(
                       title: Text('User ${user.userPK}'),
-                      onTap: () => state.fetchPartnerData(user),
+                      onTap: () => state.fetchUser(user),
                     );
                   },
                 ),
@@ -74,7 +74,7 @@ class PartnerAppPage extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 8.0),
                             child: Text(
-                              '${state.selectedUser?.firstName}',
+                              '${state.selectedUser?.dob}',
                               style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ),

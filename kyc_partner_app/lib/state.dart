@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:kyc_app_client/kyc_app_client.dart';
 import 'package:kyc_client_dart/kyc_client_dart.dart';
 import 'package:kyc_partner_app/model/kyc_model.dart';
-import 'package:solana/base58.dart';
 import 'package:solana/solana.dart';
 
 class PartnerAppState extends ChangeNotifier {
@@ -34,26 +33,20 @@ class PartnerAppState extends ChangeNotifier {
     final keyPair = await account.extract();
     _publicKey = keyPair.publicKey;
 
-    final test = SimpleKeyPairData(
+    _partnerClient = KycPartnerClient(
+        authKeyPair: SimpleKeyPairData(
       keyPair.bytes,
       publicKey: SimplePublicKey(
         keyPair.publicKey.bytes,
         type: KeyPairType.ed25519,
       ),
       type: KeyPairType.ed25519,
-    );
+    ));
 
-    print(keyPair.publicKey);
-
-    print(await keyPair
-        .extractPublicKey()
-        .then((value) => value.bytes)
-        .then(base58encode));
-
-    _partnerClient = KycPartnerClient(authKeyPair: test);
+    fetch();
   }
 
-  Future<void> fetchPublicKeys() async {
+  Future<void> fetch() async {
     _isLoading = true;
     notifyListeners();
 
@@ -76,7 +69,7 @@ class PartnerAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> fetchPartnerData(KycUsers user) async {
+  Future<void> fetchUser(KycUsers user) async {
     _isLoading = true;
     notifyListeners();
 
