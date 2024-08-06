@@ -40,12 +40,12 @@ class _PhoneInputScreenState extends State<PhoneInputScreen> {
 
           await state.updateNumber(phoneNumber);
 
-          await state.generatePartnerToken(partnerAuthPk);
+          await state.generateValidatorToken(validatorAuthPk);
 
           await otpClient.sendOtpBySms(
             SendOtpRequest(
               secretKey: state.rawSecretKey,
-              partnerToken: state.partnerToken,
+              partnerToken: state.validatorToken,
               userPk: state.authPublicKey,
             ),
           );

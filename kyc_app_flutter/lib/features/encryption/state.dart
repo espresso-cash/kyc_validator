@@ -6,12 +6,14 @@ import 'package:solana/solana.dart';
 
 import '../kyc/model/kyc_model.dart';
 
-const partnerAuthPk = 'HHV5joB6D4c2pigVZcQ9RY5suDMvAiHBLLBCFqmWuM4E';
+const validatorAuthPk = 'HHV5joB6D4c2pigVZcQ9RY5suDMvAiHBLLBCFqmWuM4E';
+const partnerAuthPk = '5PcfzhA3saCwcJjRstKyytMwwxeK1XJt48WGUhZEyecp';
 
 class WalletAppState extends ChangeNotifier {
   Ed25519HDKeyPair? get wallet => _wallet;
   String get authPublicKey => _authPublicKey;
   String get rawSecretKey => _rawSecretKey;
+  String get validatorToken => _validatorToken;
   String get partnerToken => _partnerToken;
   PartnerModel? get partnerInfo => _partnerInfo;
   String? get email => _email;
@@ -21,6 +23,7 @@ class WalletAppState extends ChangeNotifier {
   Ed25519HDKeyPair? _wallet;
 
   late String _authPublicKey = '';
+  String _validatorToken = '';
   String _partnerToken = '';
   late String _rawSecretKey = '';
   String _userPublicKey = '';
@@ -32,6 +35,7 @@ class WalletAppState extends ChangeNotifier {
   late KycUserClient _client;
 
   Future<void> createWallet() async {
+    _validatorToken = '';
     _partnerToken = '';
     _wallet = await Ed25519HDKeyPair.random();
 
@@ -49,6 +53,12 @@ class WalletAppState extends ChangeNotifier {
     _userPublicKey = publicKey;
     _rawSecretKey = _client.rawSecretKey;
     _authPublicKey = _client.authPublicKey;
+
+    notifyListeners();
+  }
+
+  Future<void> generateValidatorToken(String partnerPK) async {
+    _validatorToken = await _client.generatePartnerToken(partnerPK);
 
     notifyListeners();
   }

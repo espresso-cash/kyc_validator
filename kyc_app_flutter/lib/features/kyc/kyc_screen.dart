@@ -20,8 +20,6 @@ import 'camera_screen.dart';
 import 'data/client.dart';
 import 'model/kyc_model.dart';
 
-const _partnerPk = '5PcfzhA3saCwcJjRstKyytMwwxeK1XJt48WGUhZEyecp';
-
 class KycPage extends StatefulWidget {
   const KycPage({super.key});
 
@@ -83,16 +81,18 @@ class _KycPageState extends State<KycPage> {
             photo: photo,
           );
 
-          await state.generatePartnerToken(partnerAuthPk);
+          await state.generateValidatorToken(validatorAuthPk);
 
           await kycClient.requestKyc(
             KycRequest(
               secretKey: state.rawSecretKey,
-              partnerToken: state.partnerToken,
+              partnerToken: state.validatorToken,
               userAuthPk: state.authPublicKey,
               userPublicKey: state.userPublicKey,
             ),
           );
+
+          await state.generateValidatorToken(partnerAuthPk);
 
           await partnerClient.sendUserData(
             SendUserDataRequest(
@@ -101,7 +101,7 @@ class _KycPageState extends State<KycPage> {
                 partnerToken: state.partnerToken,
                 userPk: state.authPublicKey,
               ),
-              partnerPk: _partnerPk,
+              partnerPk: partnerAuthPk,
             ),
           );
 
