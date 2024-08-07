@@ -74,7 +74,7 @@ _$JobStatusResponseDtoImpl _$$JobStatusResponseDtoImplFromJson(
       jobComplete: json['job_complete'] as bool,
       jobSuccess: json['job_success'] as bool,
       timestamp: json['timestamp'] as String,
-      result: json['result'] as Map<String, dynamic>,
+      result: json['result'] as Map<String, dynamic>?,
       kycReceipt: json['kyc_receipt'] as String,
       history: (json['history'] as List<dynamic>?)
           ?.map((e) => e as Map<String, dynamic>)

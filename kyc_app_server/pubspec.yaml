@@ -6,7 +6,7 @@ environment:
 dependencies:
   archive: ^3.6.1
   convert: ^3.1.1
-  cryptography: ^2.7.0
+  crypto: ^3.0.2
   dfunc: ^0.10.0
   dio: ^5.4.0
   drift: ^2.14.1

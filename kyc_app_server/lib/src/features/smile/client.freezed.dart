@@ -761,7 +761,7 @@ mixin _$JobStatusResponseDto {
   bool get jobComplete => throw _privateConstructorUsedError;
   bool get jobSuccess => throw _privateConstructorUsedError;
   String get timestamp => throw _privateConstructorUsedError;
-  Map<String, dynamic> get result => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get result => throw _privateConstructorUsedError;
   String get kycReceipt => throw _privateConstructorUsedError;
   List<Map<String, dynamic>>? get history => throw _privateConstructorUsedError;
   Map<String, dynamic>? get imageLinks => throw _privateConstructorUsedError;
@@ -787,7 +787,7 @@ abstract class $JobStatusResponseDtoCopyWith<$Res> {
       bool jobComplete,
       bool jobSuccess,
       String timestamp,
-      Map<String, dynamic> result,
+      Map<String, dynamic>? result,
       String kycReceipt,
       List<Map<String, dynamic>>? history,
       Map<String, dynamic>? imageLinks});
@@ -813,7 +813,7 @@ class _$JobStatusResponseDtoCopyWithImpl<$Res,
     Object? jobComplete = null,
     Object? jobSuccess = null,
     Object? timestamp = null,
-    Object? result = null,
+    Object? result = freezed,
     Object? kycReceipt = null,
     Object? history = freezed,
     Object? imageLinks = freezed,
@@ -835,10 +835,10 @@ class _$JobStatusResponseDtoCopyWithImpl<$Res,
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as String,
-      result: null == result
+      result: freezed == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Map<String, dynamic>?,
       kycReceipt: null == kycReceipt
           ? _value.kycReceipt
           : kycReceipt // ignore: cast_nullable_to_non_nullable
@@ -868,7 +868,7 @@ abstract class _$$JobStatusResponseDtoImplCopyWith<$Res>
       bool jobComplete,
       bool jobSuccess,
       String timestamp,
-      Map<String, dynamic> result,
+      Map<String, dynamic>? result,
       String kycReceipt,
       List<Map<String, dynamic>>? history,
       Map<String, dynamic>? imageLinks});
@@ -891,7 +891,7 @@ class __$$JobStatusResponseDtoImplCopyWithImpl<$Res>
     Object? jobComplete = null,
     Object? jobSuccess = null,
     Object? timestamp = null,
-    Object? result = null,
+    Object? result = freezed,
     Object? kycReceipt = null,
     Object? history = freezed,
     Object? imageLinks = freezed,
@@ -913,10 +913,10 @@ class __$$JobStatusResponseDtoImplCopyWithImpl<$Res>
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as String,
-      result: null == result
+      result: freezed == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Map<String, dynamic>?,
       kycReceipt: null == kycReceipt
           ? _value.kycReceipt
           : kycReceipt // ignore: cast_nullable_to_non_nullable
@@ -942,7 +942,7 @@ class _$JobStatusResponseDtoImpl implements _JobStatusResponseDto {
       required this.jobComplete,
       required this.jobSuccess,
       required this.timestamp,
-      required final Map<String, dynamic> result,
+      required final Map<String, dynamic>? result,
       required this.kycReceipt,
       required final List<Map<String, dynamic>>? history,
       required final Map<String, dynamic>? imageLinks})
@@ -961,12 +961,14 @@ class _$JobStatusResponseDtoImpl implements _JobStatusResponseDto {
   final bool jobSuccess;
   @override
   final String timestamp;
-  final Map<String, dynamic> _result;
+  final Map<String, dynamic>? _result;
   @override
-  Map<String, dynamic> get result {
+  Map<String, dynamic>? get result {
+    final value = _result;
+    if (value == null) return null;
     if (_result is EqualUnmodifiableMapView) return _result;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_result);
+    return EqualUnmodifiableMapView(value);
   }
 
   @override
@@ -1053,7 +1055,7 @@ abstract class _JobStatusResponseDto implements JobStatusResponseDto {
           required final bool jobComplete,
           required final bool jobSuccess,
           required final String timestamp,
-          required final Map<String, dynamic> result,
+          required final Map<String, dynamic>? result,
           required final String kycReceipt,
           required final List<Map<String, dynamic>>? history,
           required final Map<String, dynamic>? imageLinks}) =
@@ -1071,7 +1073,7 @@ abstract class _JobStatusResponseDto implements JobStatusResponseDto {
   @override
   String get timestamp;
   @override
-  Map<String, dynamic> get result;
+  Map<String, dynamic>? get result;
   @override
   String get kycReceipt;
   @override

@@ -107,7 +107,7 @@ class JobStatusResponseDto with _$JobStatusResponseDto {
     required bool jobComplete,
     required bool jobSuccess,
     required String timestamp,
-    required Map<String, dynamic> result,
+    required Map<String, dynamic>? result,
     required String kycReceipt,
     required List<Map<String, dynamic>>? history,
     required Map<String, dynamic>? imageLinks,

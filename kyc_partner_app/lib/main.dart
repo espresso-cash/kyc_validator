@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_json_view/flutter_json_view.dart';
 import 'package:kyc_partner_app/data.dart';
 import 'package:kyc_partner_app/model/kyc_model.dart';
 import 'package:kyc_partner_app/state.dart';
@@ -35,29 +36,29 @@ class MyApp extends StatelessWidget {
 }
 
 class PartnerAppPage extends StatelessWidget {
-  const PartnerAppPage({Key? key}) : super(key: key);
+  const PartnerAppPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Partner App')),
+      appBar: AppBar(title: const Text('Partner App')),
       body: Consumer<PartnerAppState>(
         builder: (context, state, child) {
           if (state.isLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (state.users.isEmpty) {
-            return Center(child: Text('No users found'));
+            return const Center(child: Text('No users found'));
           }
           return ListView.builder(
             itemCount: state.users.length,
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             itemBuilder: (context, index) {
               final user = state.users[index];
 
               return Card(
                 child: ListTile(
-                  title: Text('User PK'),
+                  title: const Text('User PK'),
                   subtitle: Text(user.userPK),
                   onTap: () async {
                     Navigator.push(
@@ -80,7 +81,7 @@ class PartnerAppPage extends StatelessWidget {
 class UserDetailPage extends StatefulWidget {
   final KycUsers user;
 
-  UserDetailPage({Key? key, required this.user}) : super(key: key);
+  const UserDetailPage({super.key, required this.user});
 
   @override
   State<UserDetailPage> createState() => _UserDetailPageState();
@@ -112,12 +113,12 @@ class _UserDetailPageState extends State<UserDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('User Details')),
+      appBar: AppBar(title: const Text('User Details')),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: <Widget>[
                     if (_userInfo?.selfie != null)
@@ -128,47 +129,47 @@ class _UserDetailPageState extends State<UserDetailPage> {
                       ),
                     const SizedBox(height: 24),
                     ListTile(
-                      title: Text('First Name'),
+                      title: const Text('First Name'),
                       subtitle: Text(_userInfo?.firstName ?? ''),
                     ),
                     ListTile(
-                      title: Text('Middle Name'),
+                      title: const Text('Middle Name'),
                       subtitle: Text(_userInfo?.middleName ?? ''),
                     ),
                     ListTile(
-                      title: Text('Last Name'),
+                      title: const Text('Last Name'),
                       subtitle: Text(_userInfo?.lastName ?? ''),
                     ),
                     ListTile(
-                      title: Text('Date of Birth'),
+                      title: const Text('Date of Birth'),
                       subtitle: Text(_userInfo?.dob ?? ''),
                     ),
                     ListTile(
-                      title: Text('Country Code'),
+                      title: const Text('Country Code'),
                       subtitle: Text(_userInfo?.countryCode ?? ''),
                     ),
                     ListTile(
-                      title: Text('ID Type'),
+                      title: const Text('ID Type'),
                       subtitle: Text(_userInfo?.idType ?? ''),
                     ),
                     ListTile(
-                      title: Text('ID Number'),
+                      title: const Text('ID Number'),
                       subtitle: Text(_userInfo?.idNumber ?? ''),
                     ),
-                    if (_userInfo?.smileIdResult case final result?)
-                      ListTile(
-                        title: Text('Smile ID Result'),
-                        subtitle: Text(result),
-                      ),
                     if (_userInfo?.emailVerificationResult?.isNotEmpty ?? false)
-                      ListTile(
+                      const ListTile(
                         title: Text('Email'),
                         subtitle: Text('Verified'),
                       ),
                     if (_userInfo?.phoneVerificationResult?.isNotEmpty ?? false)
-                      ListTile(
+                      const ListTile(
                         title: Text('Phone'),
                         subtitle: Text('Verified'),
+                      ),
+                    if (_userInfo?.smileIdResult case final result?)
+                      ListTile(
+                        title: const Text('Smile ID Result'),
+                        subtitle: JsonView.map(jsonDecode(result)),
                       ),
                   ],
                 ),

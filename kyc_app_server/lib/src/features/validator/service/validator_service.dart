@@ -32,14 +32,27 @@ class ValidatorService {
       userPK: userAuthPK,
     );
 
-    await _sendToSmile(user.copyWith(userId: userPublicKey));
-
-    await _kycClient.setValidationResult('success');
-  }
-
-  Future<bool> _sendToSmile(KycUserInfo user) async {
     final jobId = Uuid().v4();
 
+    await _sendToSmile(
+      jobId: jobId,
+      user: user.copyWith(userId: userPublicKey),
+    );
+
+    await Future.delayed(Duration(seconds: 10));
+
+    final results = await _smileApiClient.status(JobStatusRequestDto(
+      jobId: jobId,
+      userId: userPublicKey,
+    ));
+
+    await _kycClient.setValidationResult(jsonEncode(results));
+  }
+
+  Future<bool> _sendToSmile({
+    required KycUserInfo user,
+    required String jobId,
+  }) async {
     try {
       final dob = DateFormat('dd/MM/yyyy').format(DateTime.parse(user.dob));
 
@@ -56,7 +69,7 @@ class ValidatorService {
             'FullName':
                 '${user.firstName} ${user.middleName}  ${user.lastName}',
             'DOB': dob,
-            //'Photo': user.selfie!,
+            // 'Photo': user.selfie!,
           },
         ),
       );
