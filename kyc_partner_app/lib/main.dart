@@ -88,7 +88,7 @@ class UserDetailPage extends StatefulWidget {
 }
 
 class _UserDetailPageState extends State<UserDetailPage> {
-  KycUserInfo? _userInfo;
+  KycUserDetails? _kycUserDetails;
   bool _isLoading = true;
 
   @override
@@ -102,7 +102,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
       final state = Provider.of<PartnerAppState>(context, listen: false);
       final user = await state.fetchUser(widget.user);
       setState(() {
-        _userInfo = user;
+        _kycUserDetails = user;
         _isLoading = false;
       });
     } catch (e) {
@@ -112,6 +112,8 @@ class _UserDetailPageState extends State<UserDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final kycInfo = _kycUserDetails?.kycInfo;
+    final verificationResults = _kycUserDetails?.verificationResults;
     return Scaffold(
       appBar: AppBar(title: const Text('User Details')),
       body: _isLoading
@@ -121,52 +123,61 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: <Widget>[
-                    if (_userInfo?.selfie != null)
+                    if (kycInfo?.selfie != null)
                       CircleAvatar(
                         radius: 65,
-                        backgroundImage:
-                            MemoryImage(base64Decode(_userInfo!.selfie!)),
+                        backgroundImage: MemoryImage(
+                          base64Decode(
+                            (_kycUserDetails!.kycInfo.selfie!),
+                          ),
+                        ),
                       ),
                     const SizedBox(height: 24),
                     ListTile(
                       title: const Text('First Name'),
-                      subtitle: Text(_userInfo?.firstName ?? ''),
+                      subtitle: Text(
+                        (kycInfo?.firstName ?? ''),
+                      ),
                     ),
                     ListTile(
                       title: const Text('Middle Name'),
-                      subtitle: Text(_userInfo?.middleName ?? ''),
+                      subtitle: Text(kycInfo?.middleName ?? ''),
                     ),
                     ListTile(
                       title: const Text('Last Name'),
-                      subtitle: Text(_userInfo?.lastName ?? ''),
+                      subtitle: Text(kycInfo?.lastName ?? ''),
                     ),
                     ListTile(
                       title: const Text('Date of Birth'),
-                      subtitle: Text(_userInfo?.dob ?? ''),
+                      subtitle: Text(kycInfo?.dob ?? ''),
                     ),
                     ListTile(
                       title: const Text('Country Code'),
-                      subtitle: Text(_userInfo?.countryCode ?? ''),
+                      subtitle: Text(kycInfo?.countryCode ?? ''),
                     ),
                     ListTile(
                       title: const Text('ID Type'),
-                      subtitle: Text(_userInfo?.idType ?? ''),
+                      subtitle: Text(kycInfo?.idType ?? ''),
                     ),
                     ListTile(
                       title: const Text('ID Number'),
-                      subtitle: Text(_userInfo?.idNumber ?? ''),
+                      subtitle: Text(kycInfo?.idNumber ?? ''),
                     ),
-                    if (_userInfo?.emailVerificationResult?.isNotEmpty ?? false)
-                      const ListTile(
-                        title: Text('Email'),
-                        subtitle: Text('Verified'),
+                    if (verificationResults?.emailVerification?.isNotEmpty ??
+                        false)
+                      ListTile(
+                        title: const Text('Email'),
+                        subtitle: Text(_kycUserDetails?.email ?? ''),
+                        trailing: const Text('Verified'),
                       ),
-                    if (_userInfo?.phoneVerificationResult?.isNotEmpty ?? false)
-                      const ListTile(
-                        title: Text('Phone'),
-                        subtitle: Text('Verified'),
+                    if (verificationResults?.phoneVerification?.isNotEmpty ??
+                        false)
+                      ListTile(
+                        title: const Text('Phone'),
+                        subtitle: Text(_kycUserDetails?.phone ?? ''),
+                        trailing: const Text('Verified'),
                       ),
-                    if (_userInfo?.smileIdResult case final result?)
+                    if (verificationResults?.smileId case final result?)
                       ListTile(
                         title: const Text('Smile ID Result'),
                         subtitle: JsonView.map(jsonDecode(result)),

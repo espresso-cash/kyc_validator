@@ -6,8 +6,26 @@ part of 'kyc_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KycUserInfoImpl _$$KycUserInfoImplFromJson(Map<String, dynamic> json) =>
-    _$KycUserInfoImpl(
+_$KycUserDetailsImpl _$$KycUserDetailsImplFromJson(Map<String, dynamic> json) =>
+    _$KycUserDetailsImpl(
+      kycInfo: KycInfo.fromJson(json['kycInfo'] as Map<String, dynamic>),
+      email: json['email'] as String,
+      phone: json['phone'] as String,
+      verificationResults: VerificationResults.fromJson(
+          json['verificationResults'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$KycUserDetailsImplToJson(
+        _$KycUserDetailsImpl instance) =>
+    <String, dynamic>{
+      'kycInfo': instance.kycInfo,
+      'email': instance.email,
+      'phone': instance.phone,
+      'verificationResults': instance.verificationResults,
+    };
+
+_$KycInfoImpl _$$KycInfoImplFromJson(Map<String, dynamic> json) =>
+    _$KycInfoImpl(
       userId: json['userId'] as String?,
       jobId: json['jobId'] as String?,
       firstName: json['firstName'] as String,
@@ -18,12 +36,9 @@ _$KycUserInfoImpl _$$KycUserInfoImplFromJson(Map<String, dynamic> json) =>
       idType: json['idType'] as String,
       idNumber: json['idNumber'] as String,
       selfie: json['selfie'] as String?,
-      smileIdResult: json['smileIdResult'] as String?,
-      emailVerificationResult: json['emailVerificationResult'] as String?,
-      phoneVerificationResult: json['phoneVerificationResult'] as String?,
     );
 
-Map<String, dynamic> _$$KycUserInfoImplToJson(_$KycUserInfoImpl instance) =>
+Map<String, dynamic> _$$KycInfoImplToJson(_$KycInfoImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'jobId': instance.jobId,
@@ -35,9 +50,22 @@ Map<String, dynamic> _$$KycUserInfoImplToJson(_$KycUserInfoImpl instance) =>
       'idType': instance.idType,
       'idNumber': instance.idNumber,
       'selfie': instance.selfie,
-      'smileIdResult': instance.smileIdResult,
-      'emailVerificationResult': instance.emailVerificationResult,
-      'phoneVerificationResult': instance.phoneVerificationResult,
+    };
+
+_$VerificationResultsImpl _$$VerificationResultsImplFromJson(
+        Map<String, dynamic> json) =>
+    _$VerificationResultsImpl(
+      smileId: json['smileId'] as String?,
+      emailVerification: json['emailVerification'] as String?,
+      phoneVerification: json['phoneVerification'] as String?,
+    );
+
+Map<String, dynamic> _$$VerificationResultsImplToJson(
+        _$VerificationResultsImpl instance) =>
+    <String, dynamic>{
+      'smileId': instance.smileId,
+      'emailVerification': instance.emailVerification,
+      'phoneVerification': instance.phoneVerification,
     };
 
 _$KycUsersImpl _$$KycUsersImplFromJson(Map<String, dynamic> json) =>

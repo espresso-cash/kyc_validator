@@ -14,12 +14,242 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-KycUserInfo _$KycUserInfoFromJson(Map<String, dynamic> json) {
-  return _KycUserInfo.fromJson(json);
+KycUserDetails _$KycUserDetailsFromJson(Map<String, dynamic> json) {
+  return _KycUserDetails.fromJson(json);
 }
 
 /// @nodoc
-mixin _$KycUserInfo {
+mixin _$KycUserDetails {
+  KycInfo get kycInfo => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+  VerificationResults get verificationResults =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $KycUserDetailsCopyWith<KycUserDetails> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $KycUserDetailsCopyWith<$Res> {
+  factory $KycUserDetailsCopyWith(
+          KycUserDetails value, $Res Function(KycUserDetails) then) =
+      _$KycUserDetailsCopyWithImpl<$Res, KycUserDetails>;
+  @useResult
+  $Res call(
+      {KycInfo kycInfo,
+      String email,
+      String phone,
+      VerificationResults verificationResults});
+
+  $KycInfoCopyWith<$Res> get kycInfo;
+  $VerificationResultsCopyWith<$Res> get verificationResults;
+}
+
+/// @nodoc
+class _$KycUserDetailsCopyWithImpl<$Res, $Val extends KycUserDetails>
+    implements $KycUserDetailsCopyWith<$Res> {
+  _$KycUserDetailsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? kycInfo = null,
+    Object? email = null,
+    Object? phone = null,
+    Object? verificationResults = null,
+  }) {
+    return _then(_value.copyWith(
+      kycInfo: null == kycInfo
+          ? _value.kycInfo
+          : kycInfo // ignore: cast_nullable_to_non_nullable
+              as KycInfo,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      verificationResults: null == verificationResults
+          ? _value.verificationResults
+          : verificationResults // ignore: cast_nullable_to_non_nullable
+              as VerificationResults,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $KycInfoCopyWith<$Res> get kycInfo {
+    return $KycInfoCopyWith<$Res>(_value.kycInfo, (value) {
+      return _then(_value.copyWith(kycInfo: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VerificationResultsCopyWith<$Res> get verificationResults {
+    return $VerificationResultsCopyWith<$Res>(_value.verificationResults,
+        (value) {
+      return _then(_value.copyWith(verificationResults: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$KycUserDetailsImplCopyWith<$Res>
+    implements $KycUserDetailsCopyWith<$Res> {
+  factory _$$KycUserDetailsImplCopyWith(_$KycUserDetailsImpl value,
+          $Res Function(_$KycUserDetailsImpl) then) =
+      __$$KycUserDetailsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {KycInfo kycInfo,
+      String email,
+      String phone,
+      VerificationResults verificationResults});
+
+  @override
+  $KycInfoCopyWith<$Res> get kycInfo;
+  @override
+  $VerificationResultsCopyWith<$Res> get verificationResults;
+}
+
+/// @nodoc
+class __$$KycUserDetailsImplCopyWithImpl<$Res>
+    extends _$KycUserDetailsCopyWithImpl<$Res, _$KycUserDetailsImpl>
+    implements _$$KycUserDetailsImplCopyWith<$Res> {
+  __$$KycUserDetailsImplCopyWithImpl(
+      _$KycUserDetailsImpl _value, $Res Function(_$KycUserDetailsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? kycInfo = null,
+    Object? email = null,
+    Object? phone = null,
+    Object? verificationResults = null,
+  }) {
+    return _then(_$KycUserDetailsImpl(
+      kycInfo: null == kycInfo
+          ? _value.kycInfo
+          : kycInfo // ignore: cast_nullable_to_non_nullable
+              as KycInfo,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      verificationResults: null == verificationResults
+          ? _value.verificationResults
+          : verificationResults // ignore: cast_nullable_to_non_nullable
+              as VerificationResults,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$KycUserDetailsImpl implements _KycUserDetails {
+  const _$KycUserDetailsImpl(
+      {required this.kycInfo,
+      required this.email,
+      required this.phone,
+      required this.verificationResults});
+
+  factory _$KycUserDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KycUserDetailsImplFromJson(json);
+
+  @override
+  final KycInfo kycInfo;
+  @override
+  final String email;
+  @override
+  final String phone;
+  @override
+  final VerificationResults verificationResults;
+
+  @override
+  String toString() {
+    return 'KycUserDetails(kycInfo: $kycInfo, email: $email, phone: $phone, verificationResults: $verificationResults)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KycUserDetailsImpl &&
+            (identical(other.kycInfo, kycInfo) || other.kycInfo == kycInfo) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.verificationResults, verificationResults) ||
+                other.verificationResults == verificationResults));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, kycInfo, email, phone, verificationResults);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KycUserDetailsImplCopyWith<_$KycUserDetailsImpl> get copyWith =>
+      __$$KycUserDetailsImplCopyWithImpl<_$KycUserDetailsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$KycUserDetailsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _KycUserDetails implements KycUserDetails {
+  const factory _KycUserDetails(
+          {required final KycInfo kycInfo,
+          required final String email,
+          required final String phone,
+          required final VerificationResults verificationResults}) =
+      _$KycUserDetailsImpl;
+
+  factory _KycUserDetails.fromJson(Map<String, dynamic> json) =
+      _$KycUserDetailsImpl.fromJson;
+
+  @override
+  KycInfo get kycInfo;
+  @override
+  String get email;
+  @override
+  String get phone;
+  @override
+  VerificationResults get verificationResults;
+  @override
+  @JsonKey(ignore: true)
+  _$$KycUserDetailsImplCopyWith<_$KycUserDetailsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+KycInfo _$KycInfoFromJson(Map<String, dynamic> json) {
+  return _KycInfo.fromJson(json);
+}
+
+/// @nodoc
+mixin _$KycInfo {
   String? get userId => throw _privateConstructorUsedError;
   String? get jobId => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
@@ -30,21 +260,16 @@ mixin _$KycUserInfo {
   String get idType => throw _privateConstructorUsedError;
   String get idNumber => throw _privateConstructorUsedError;
   String? get selfie => throw _privateConstructorUsedError;
-  String? get smileIdResult => throw _privateConstructorUsedError;
-  String? get emailVerificationResult => throw _privateConstructorUsedError;
-  String? get phoneVerificationResult => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $KycUserInfoCopyWith<KycUserInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+  $KycInfoCopyWith<KycInfo> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $KycUserInfoCopyWith<$Res> {
-  factory $KycUserInfoCopyWith(
-          KycUserInfo value, $Res Function(KycUserInfo) then) =
-      _$KycUserInfoCopyWithImpl<$Res, KycUserInfo>;
+abstract class $KycInfoCopyWith<$Res> {
+  factory $KycInfoCopyWith(KycInfo value, $Res Function(KycInfo) then) =
+      _$KycInfoCopyWithImpl<$Res, KycInfo>;
   @useResult
   $Res call(
       {String? userId,
@@ -56,16 +281,13 @@ abstract class $KycUserInfoCopyWith<$Res> {
       String countryCode,
       String idType,
       String idNumber,
-      String? selfie,
-      String? smileIdResult,
-      String? emailVerificationResult,
-      String? phoneVerificationResult});
+      String? selfie});
 }
 
 /// @nodoc
-class _$KycUserInfoCopyWithImpl<$Res, $Val extends KycUserInfo>
-    implements $KycUserInfoCopyWith<$Res> {
-  _$KycUserInfoCopyWithImpl(this._value, this._then);
+class _$KycInfoCopyWithImpl<$Res, $Val extends KycInfo>
+    implements $KycInfoCopyWith<$Res> {
+  _$KycInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -85,9 +307,6 @@ class _$KycUserInfoCopyWithImpl<$Res, $Val extends KycUserInfo>
     Object? idType = null,
     Object? idNumber = null,
     Object? selfie = freezed,
-    Object? smileIdResult = freezed,
-    Object? emailVerificationResult = freezed,
-    Object? phoneVerificationResult = freezed,
   }) {
     return _then(_value.copyWith(
       userId: freezed == userId
@@ -130,28 +349,15 @@ class _$KycUserInfoCopyWithImpl<$Res, $Val extends KycUserInfo>
           ? _value.selfie
           : selfie // ignore: cast_nullable_to_non_nullable
               as String?,
-      smileIdResult: freezed == smileIdResult
-          ? _value.smileIdResult
-          : smileIdResult // ignore: cast_nullable_to_non_nullable
-              as String?,
-      emailVerificationResult: freezed == emailVerificationResult
-          ? _value.emailVerificationResult
-          : emailVerificationResult // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneVerificationResult: freezed == phoneVerificationResult
-          ? _value.phoneVerificationResult
-          : phoneVerificationResult // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$KycUserInfoImplCopyWith<$Res>
-    implements $KycUserInfoCopyWith<$Res> {
-  factory _$$KycUserInfoImplCopyWith(
-          _$KycUserInfoImpl value, $Res Function(_$KycUserInfoImpl) then) =
-      __$$KycUserInfoImplCopyWithImpl<$Res>;
+abstract class _$$KycInfoImplCopyWith<$Res> implements $KycInfoCopyWith<$Res> {
+  factory _$$KycInfoImplCopyWith(
+          _$KycInfoImpl value, $Res Function(_$KycInfoImpl) then) =
+      __$$KycInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -164,18 +370,15 @@ abstract class _$$KycUserInfoImplCopyWith<$Res>
       String countryCode,
       String idType,
       String idNumber,
-      String? selfie,
-      String? smileIdResult,
-      String? emailVerificationResult,
-      String? phoneVerificationResult});
+      String? selfie});
 }
 
 /// @nodoc
-class __$$KycUserInfoImplCopyWithImpl<$Res>
-    extends _$KycUserInfoCopyWithImpl<$Res, _$KycUserInfoImpl>
-    implements _$$KycUserInfoImplCopyWith<$Res> {
-  __$$KycUserInfoImplCopyWithImpl(
-      _$KycUserInfoImpl _value, $Res Function(_$KycUserInfoImpl) _then)
+class __$$KycInfoImplCopyWithImpl<$Res>
+    extends _$KycInfoCopyWithImpl<$Res, _$KycInfoImpl>
+    implements _$$KycInfoImplCopyWith<$Res> {
+  __$$KycInfoImplCopyWithImpl(
+      _$KycInfoImpl _value, $Res Function(_$KycInfoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -191,11 +394,8 @@ class __$$KycUserInfoImplCopyWithImpl<$Res>
     Object? idType = null,
     Object? idNumber = null,
     Object? selfie = freezed,
-    Object? smileIdResult = freezed,
-    Object? emailVerificationResult = freezed,
-    Object? phoneVerificationResult = freezed,
   }) {
-    return _then(_$KycUserInfoImpl(
+    return _then(_$KycInfoImpl(
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -236,26 +436,14 @@ class __$$KycUserInfoImplCopyWithImpl<$Res>
           ? _value.selfie
           : selfie // ignore: cast_nullable_to_non_nullable
               as String?,
-      smileIdResult: freezed == smileIdResult
-          ? _value.smileIdResult
-          : smileIdResult // ignore: cast_nullable_to_non_nullable
-              as String?,
-      emailVerificationResult: freezed == emailVerificationResult
-          ? _value.emailVerificationResult
-          : emailVerificationResult // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneVerificationResult: freezed == phoneVerificationResult
-          ? _value.phoneVerificationResult
-          : phoneVerificationResult // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$KycUserInfoImpl implements _KycUserInfo {
-  _$KycUserInfoImpl(
+class _$KycInfoImpl implements _KycInfo {
+  _$KycInfoImpl(
       {this.userId,
       this.jobId,
       required this.firstName,
@@ -265,13 +453,10 @@ class _$KycUserInfoImpl implements _KycUserInfo {
       required this.countryCode,
       required this.idType,
       required this.idNumber,
-      this.selfie,
-      this.smileIdResult,
-      this.emailVerificationResult,
-      this.phoneVerificationResult});
+      this.selfie});
 
-  factory _$KycUserInfoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KycUserInfoImplFromJson(json);
+  factory _$KycInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KycInfoImplFromJson(json);
 
   @override
   final String? userId;
@@ -293,23 +478,17 @@ class _$KycUserInfoImpl implements _KycUserInfo {
   final String idNumber;
   @override
   final String? selfie;
-  @override
-  final String? smileIdResult;
-  @override
-  final String? emailVerificationResult;
-  @override
-  final String? phoneVerificationResult;
 
   @override
   String toString() {
-    return 'KycUserInfo(userId: $userId, jobId: $jobId, firstName: $firstName, middleName: $middleName, lastName: $lastName, dob: $dob, countryCode: $countryCode, idType: $idType, idNumber: $idNumber, selfie: $selfie, smileIdResult: $smileIdResult, emailVerificationResult: $emailVerificationResult, phoneVerificationResult: $phoneVerificationResult)';
+    return 'KycInfo(userId: $userId, jobId: $jobId, firstName: $firstName, middleName: $middleName, lastName: $lastName, dob: $dob, countryCode: $countryCode, idType: $idType, idNumber: $idNumber, selfie: $selfie)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KycUserInfoImpl &&
+            other is _$KycInfoImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.jobId, jobId) || other.jobId == jobId) &&
             (identical(other.firstName, firstName) ||
@@ -324,51 +503,30 @@ class _$KycUserInfoImpl implements _KycUserInfo {
             (identical(other.idType, idType) || other.idType == idType) &&
             (identical(other.idNumber, idNumber) ||
                 other.idNumber == idNumber) &&
-            (identical(other.selfie, selfie) || other.selfie == selfie) &&
-            (identical(other.smileIdResult, smileIdResult) ||
-                other.smileIdResult == smileIdResult) &&
-            (identical(
-                    other.emailVerificationResult, emailVerificationResult) ||
-                other.emailVerificationResult == emailVerificationResult) &&
-            (identical(
-                    other.phoneVerificationResult, phoneVerificationResult) ||
-                other.phoneVerificationResult == phoneVerificationResult));
+            (identical(other.selfie, selfie) || other.selfie == selfie));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      userId,
-      jobId,
-      firstName,
-      middleName,
-      lastName,
-      dob,
-      countryCode,
-      idType,
-      idNumber,
-      selfie,
-      smileIdResult,
-      emailVerificationResult,
-      phoneVerificationResult);
+  int get hashCode => Object.hash(runtimeType, userId, jobId, firstName,
+      middleName, lastName, dob, countryCode, idType, idNumber, selfie);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KycUserInfoImplCopyWith<_$KycUserInfoImpl> get copyWith =>
-      __$$KycUserInfoImplCopyWithImpl<_$KycUserInfoImpl>(this, _$identity);
+  _$$KycInfoImplCopyWith<_$KycInfoImpl> get copyWith =>
+      __$$KycInfoImplCopyWithImpl<_$KycInfoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KycUserInfoImplToJson(
+    return _$$KycInfoImplToJson(
       this,
     );
   }
 }
 
-abstract class _KycUserInfo implements KycUserInfo {
-  factory _KycUserInfo(
+abstract class _KycInfo implements KycInfo {
+  factory _KycInfo(
       {final String? userId,
       final String? jobId,
       required final String firstName,
@@ -378,13 +536,9 @@ abstract class _KycUserInfo implements KycUserInfo {
       required final String countryCode,
       required final String idType,
       required final String idNumber,
-      final String? selfie,
-      final String? smileIdResult,
-      final String? emailVerificationResult,
-      final String? phoneVerificationResult}) = _$KycUserInfoImpl;
+      final String? selfie}) = _$KycInfoImpl;
 
-  factory _KycUserInfo.fromJson(Map<String, dynamic> json) =
-      _$KycUserInfoImpl.fromJson;
+  factory _KycInfo.fromJson(Map<String, dynamic> json) = _$KycInfoImpl.fromJson;
 
   @override
   String? get userId;
@@ -407,14 +561,186 @@ abstract class _KycUserInfo implements KycUserInfo {
   @override
   String? get selfie;
   @override
-  String? get smileIdResult;
+  @JsonKey(ignore: true)
+  _$$KycInfoImplCopyWith<_$KycInfoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+VerificationResults _$VerificationResultsFromJson(Map<String, dynamic> json) {
+  return _VerificationResults.fromJson(json);
+}
+
+/// @nodoc
+mixin _$VerificationResults {
+  String? get smileId => throw _privateConstructorUsedError;
+  String? get emailVerification => throw _privateConstructorUsedError;
+  String? get phoneVerification => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $VerificationResultsCopyWith<VerificationResults> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VerificationResultsCopyWith<$Res> {
+  factory $VerificationResultsCopyWith(
+          VerificationResults value, $Res Function(VerificationResults) then) =
+      _$VerificationResultsCopyWithImpl<$Res, VerificationResults>;
+  @useResult
+  $Res call(
+      {String? smileId, String? emailVerification, String? phoneVerification});
+}
+
+/// @nodoc
+class _$VerificationResultsCopyWithImpl<$Res, $Val extends VerificationResults>
+    implements $VerificationResultsCopyWith<$Res> {
+  _$VerificationResultsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
   @override
-  String? get emailVerificationResult;
+  $Res call({
+    Object? smileId = freezed,
+    Object? emailVerification = freezed,
+    Object? phoneVerification = freezed,
+  }) {
+    return _then(_value.copyWith(
+      smileId: freezed == smileId
+          ? _value.smileId
+          : smileId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailVerification: freezed == emailVerification
+          ? _value.emailVerification
+          : emailVerification // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneVerification: freezed == phoneVerification
+          ? _value.phoneVerification
+          : phoneVerification // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$VerificationResultsImplCopyWith<$Res>
+    implements $VerificationResultsCopyWith<$Res> {
+  factory _$$VerificationResultsImplCopyWith(_$VerificationResultsImpl value,
+          $Res Function(_$VerificationResultsImpl) then) =
+      __$$VerificationResultsImplCopyWithImpl<$Res>;
   @override
-  String? get phoneVerificationResult;
+  @useResult
+  $Res call(
+      {String? smileId, String? emailVerification, String? phoneVerification});
+}
+
+/// @nodoc
+class __$$VerificationResultsImplCopyWithImpl<$Res>
+    extends _$VerificationResultsCopyWithImpl<$Res, _$VerificationResultsImpl>
+    implements _$$VerificationResultsImplCopyWith<$Res> {
+  __$$VerificationResultsImplCopyWithImpl(_$VerificationResultsImpl _value,
+      $Res Function(_$VerificationResultsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? smileId = freezed,
+    Object? emailVerification = freezed,
+    Object? phoneVerification = freezed,
+  }) {
+    return _then(_$VerificationResultsImpl(
+      smileId: freezed == smileId
+          ? _value.smileId
+          : smileId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      emailVerification: freezed == emailVerification
+          ? _value.emailVerification
+          : emailVerification // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneVerification: freezed == phoneVerification
+          ? _value.phoneVerification
+          : phoneVerification // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$VerificationResultsImpl implements _VerificationResults {
+  const _$VerificationResultsImpl(
+      {this.smileId, this.emailVerification, this.phoneVerification});
+
+  factory _$VerificationResultsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VerificationResultsImplFromJson(json);
+
+  @override
+  final String? smileId;
+  @override
+  final String? emailVerification;
+  @override
+  final String? phoneVerification;
+
+  @override
+  String toString() {
+    return 'VerificationResults(smileId: $smileId, emailVerification: $emailVerification, phoneVerification: $phoneVerification)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerificationResultsImpl &&
+            (identical(other.smileId, smileId) || other.smileId == smileId) &&
+            (identical(other.emailVerification, emailVerification) ||
+                other.emailVerification == emailVerification) &&
+            (identical(other.phoneVerification, phoneVerification) ||
+                other.phoneVerification == phoneVerification));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, smileId, emailVerification, phoneVerification);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerificationResultsImplCopyWith<_$VerificationResultsImpl> get copyWith =>
+      __$$VerificationResultsImplCopyWithImpl<_$VerificationResultsImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VerificationResultsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _VerificationResults implements VerificationResults {
+  const factory _VerificationResults(
+      {final String? smileId,
+      final String? emailVerification,
+      final String? phoneVerification}) = _$VerificationResultsImpl;
+
+  factory _VerificationResults.fromJson(Map<String, dynamic> json) =
+      _$VerificationResultsImpl.fromJson;
+
+  @override
+  String? get smileId;
+  @override
+  String? get emailVerification;
+  @override
+  String? get phoneVerification;
   @override
   @JsonKey(ignore: true)
-  _$$KycUserInfoImplCopyWith<_$KycUserInfoImpl> get copyWith =>
+  _$$VerificationResultsImplCopyWith<_$VerificationResultsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

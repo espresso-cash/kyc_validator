@@ -67,12 +67,12 @@ class PartnerAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<KycUserInfo> fetchUser(KycUsers user) async {
+  Future<KycUserDetails> fetchUser(KycUsers user) async {
     await _partnerClient.init(
       partnerToken: user.partnerToken,
       secretKey: user.secretKey,
     );
-    final data = await _partnerClient.getData(
+    final kycData = await _partnerClient.getData(
       keys: [
         DataInfoKeys.firstName,
         DataInfoKeys.middleName,
@@ -90,7 +90,22 @@ class PartnerAppState extends ChangeNotifier {
       userPK: user.userPK,
       secretKey: user.secretKey,
     );
-    final kyc = KycUserInfo.fromDataInfoKeys(data);
+    var kycInfo = KycInfo.fromDataInfoKeys(kycData);
+
+    kycInfo = kycInfo.copyWith(
+      selfie: base64Encode(selfie),
+    );
+
+    final otherData = await _partnerClient.getData(
+      keys: [
+        DataInfoKeys.email,
+        DataInfoKeys.phone,
+      ],
+      userPK: user.userPK,
+      secretKey: user.secretKey,
+    );
+    final email = otherData[DataInfoKeys.email.value] ?? '';
+    final phone = otherData[DataInfoKeys.phone.value] ?? '';
 
     final smileIdResult = await _partnerClient.getValidationResult(
       key: ValidationResultKeys.smileId,
@@ -98,7 +113,6 @@ class PartnerAppState extends ChangeNotifier {
       secretKey: user.secretKey,
     );
 
-    //TODO(vsumin): handle when result is empty String
     final emailVerificationResult = await _partnerClient.getValidationResult(
       key: ValidationResultKeys.email,
       validatorPK: _validatorPK,
@@ -111,11 +125,15 @@ class PartnerAppState extends ChangeNotifier {
       secretKey: user.secretKey,
     );
 
-    return kyc.copyWith(
-      selfie: base64Encode(selfie),
-      smileIdResult: smileIdResult,
-      emailVerificationResult: emailVerificationResult,
-      phoneVerificationResult: phoneVerificationResult,
+    return KycUserDetails(
+      kycInfo: kycInfo,
+      email: email,
+      phone: phone,
+      verificationResults: VerificationResults(
+        smileId: smileIdResult,
+        emailVerification: emailVerificationResult,
+        phoneVerification: phoneVerificationResult,
+      ),
     );
   }
 }
