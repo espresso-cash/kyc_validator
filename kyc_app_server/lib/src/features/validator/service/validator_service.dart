@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:kyc_app_server/config.dart';
 import 'package:kyc_app_server/src/features/smile/client.dart';
 import 'package:kyc_app_server/src/features/smile/model.dart';
-import 'package:kyc_app_server/src/features/validator/models/kyc_model.dart';
 import 'package:kyc_app_server/src/features/validator/service/kyc_client.dart';
+import 'package:kyc_client_dart/kyc_client_dart.dart';
 import 'package:uuid/uuid.dart';
 import 'dart:typed_data';
 
@@ -20,14 +20,11 @@ class ValidatorService {
   final PartnerKycService _kycClient;
 
   Future<void> call({
-    required String partnerToken,
     required String secretKey,
     required String userAuthPK,
     required String userPublicKey,
   }) async {
-    await _kycClient.generateAuthToken(partnerToken, secretKey);
-
-    final user = await _kycClient.fetchDataForSmile(
+    final user = await _kycClient.fetchUserInfo(
       secretKey: secretKey,
       userPK: userAuthPK,
     );
@@ -36,7 +33,8 @@ class ValidatorService {
 
     await _sendToSmile(
       jobId: jobId,
-      user: user.copyWith(userId: userPublicKey),
+      userId: userPublicKey,
+      user: user,
     );
 
     await Future.delayed(Duration(seconds: 10));
@@ -46,23 +44,29 @@ class ValidatorService {
       userId: userPublicKey,
     ));
 
-    await _kycClient.setValidationResult(jsonEncode(results));
+    await _kycClient.setValidationResult(
+      message: jsonEncode(results),
+      userPK: userAuthPK,
+      secretKey: secretKey,
+    );
   }
 
   Future<bool> _sendToSmile({
-    required KycUserInfo user,
+    required V1UserData user,
+    required String userId,
     required String jobId,
   }) async {
     try {
-      final dob = DateFormat('dd/MM/yyyy').format(DateTime.parse(user.dob));
+      final dob =
+          DateFormat('dd/MM/yyyy').format(DateTime.parse(user.dob ?? ''));
 
-      final photo = await modifyImage(user.selfie!);
+      final photo = await modifyImage(user.photoSelfie!);
 
       final response = await _smileApiClient.requestUpload(
         UploadRequestDto(
           callbackUrl: smileWebhookUrl,
           partnerParams: {
-            'user_id': user.userId,
+            'user_id': userId,
             'job_id': jobId,
             'job_type': '1',
             // Info below is for mocking
@@ -79,13 +83,13 @@ class ValidatorService {
       final data = InfoData(
         idInfo: IdInfo(
           dob: dob,
-          country: user.countryCode,
+          country: user.countryCode ?? '',
           entered: true,
-          idType: user.idType,
-          idNumber: user.idNumber,
-          firstName: user.firstName,
-          middleName: user.middleName,
-          lastName: user.lastName,
+          idType: user.idType ?? '',
+          idNumber: user.idNumber ?? '',
+          firstName: user.firstName ?? '',
+          middleName: user.middleName ?? '',
+          lastName: user.lastName ?? '',
         ),
         images: [
           ImageDto(

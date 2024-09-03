@@ -529,8 +529,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: ab1eb4e631d351242e12e9d63b0432fa11a05707
+      ref: upd-api
+      resolved-ref: "7f19e02394b3ac94e87ad629fd1b1189493b5ca0"
       url: "https://github.com/espresso-cash/kyc_client_dart.git"
     source: git
     version: "1.0.0"
@@ -738,10 +738,10 @@ packages:
     dependency: "direct main"
     description:
       name: solana
-      sha256: "59e9acde91958681070c32e50380daccaa69c275e078deee3b915ba043f6ba9b"
+      sha256: "349ae373501cd83d2df2285c76a97e5531d580f0e327732d883dcd0957981604"
       url: "https://pub.dev"
     source: hosted
-    version: "0.30.4"
+    version: "0.31.0"
   source_gen:
     dependency: transitive
     description:

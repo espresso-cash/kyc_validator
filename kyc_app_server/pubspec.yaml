@@ -24,9 +24,10 @@ dependencies:
   kyc_client_dart:
     git:
       url: https://github.com/espresso-cash/kyc_client_dart.git
+      ref: upd-api
   protobuf: ^3.1.0
   retrofit: ^4.0.3
-  solana: ^0.30.4
+  solana: ^0.31.0
   uuid: ^4.4.0
 
 dev_dependencies:

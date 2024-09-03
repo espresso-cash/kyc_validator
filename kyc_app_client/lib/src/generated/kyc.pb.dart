@@ -16,16 +16,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class KycRequest extends $pb.GeneratedMessage {
   factory KycRequest({
     $core.String? secretKey,
-    $core.String? partnerToken,
     $core.String? userAuthPk,
     $core.String? userPublicKey,
   }) {
     final $result = create();
     if (secretKey != null) {
       $result.secretKey = secretKey;
-    }
-    if (partnerToken != null) {
-      $result.partnerToken = partnerToken;
     }
     if (userAuthPk != null) {
       $result.userAuthPk = userAuthPk;
@@ -41,9 +37,8 @@ class KycRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'KycRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'kyc'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'secretKey', protoName: 'secretKey')
-    ..aOS(2, _omitFieldNames ? '' : 'partnerToken', protoName: 'partnerToken')
-    ..aOS(3, _omitFieldNames ? '' : 'userAuthPk', protoName: 'userAuthPk')
-    ..aOS(4, _omitFieldNames ? '' : 'userPublicKey', protoName: 'userPublicKey')
+    ..aOS(2, _omitFieldNames ? '' : 'userAuthPk', protoName: 'userAuthPk')
+    ..aOS(3, _omitFieldNames ? '' : 'userPublicKey', protoName: 'userPublicKey')
     ..hasRequiredFields = false
   ;
 
@@ -78,31 +73,22 @@ class KycRequest extends $pb.GeneratedMessage {
   void clearSecretKey() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get partnerToken => $_getSZ(1);
+  $core.String get userAuthPk => $_getSZ(1);
   @$pb.TagNumber(2)
-  set partnerToken($core.String v) { $_setString(1, v); }
+  set userAuthPk($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPartnerToken() => $_has(1);
+  $core.bool hasUserAuthPk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPartnerToken() => clearField(2);
+  void clearUserAuthPk() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get userAuthPk => $_getSZ(2);
+  $core.String get userPublicKey => $_getSZ(2);
   @$pb.TagNumber(3)
-  set userAuthPk($core.String v) { $_setString(2, v); }
+  set userPublicKey($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasUserAuthPk() => $_has(2);
+  $core.bool hasUserPublicKey() => $_has(2);
   @$pb.TagNumber(3)
-  void clearUserAuthPk() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get userPublicKey => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set userPublicKey($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasUserPublicKey() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearUserPublicKey() => clearField(4);
+  void clearUserPublicKey() => clearField(3);
 }
 
 class KycResponse extends $pb.GeneratedMessage {

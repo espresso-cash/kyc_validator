@@ -10,7 +10,6 @@ class KycEndpoint extends KycServiceBase {
     final service = sl<ValidatorService>();
 
     await service.call(
-      partnerToken: request.partnerToken,
       secretKey: request.secretKey,
       userAuthPK: request.userAuthPk,
       userPublicKey: request.userPublicKey,

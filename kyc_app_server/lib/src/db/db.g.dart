@@ -26,10 +26,10 @@ class $OtpRecordsTable extends OtpRecords
       type: PgTypes.timestampNoTimezone, requiredDuringInsert: true);
   static const VerificationMeta _typeMeta = const VerificationMeta('type');
   @override
-  late final GeneratedColumnWithTypeConverter<DataInfoKeys, String> type =
+  late final GeneratedColumnWithTypeConverter<OtpType, String> type =
       GeneratedColumn<String>('type', aliasedName, false,
               type: DriftSqlType.string, requiredDuringInsert: true)
-          .withConverter<DataInfoKeys>($OtpRecordsTable.$convertertype);
+          .withConverter<OtpType>($OtpRecordsTable.$convertertype);
   @override
   List<GeneratedColumn> get $columns => [userPk, otp, expiry, type];
   @override
@@ -86,15 +86,15 @@ class $OtpRecordsTable extends OtpRecords
     return $OtpRecordsTable(attachedDatabase, alias);
   }
 
-  static JsonTypeConverter2<DataInfoKeys, String, String> $convertertype =
-      const EnumNameConverter<DataInfoKeys>(DataInfoKeys.values);
+  static JsonTypeConverter2<OtpType, String, String> $convertertype =
+      const EnumNameConverter<OtpType>(OtpType.values);
 }
 
 class OtpRecord extends DataClass implements Insertable<OtpRecord> {
   final String userPk;
   final String otp;
   final PgDateTime expiry;
-  final DataInfoKeys type;
+  final OtpType type;
   const OtpRecord(
       {required this.userPk,
       required this.otp,
@@ -146,10 +146,7 @@ class OtpRecord extends DataClass implements Insertable<OtpRecord> {
   }
 
   OtpRecord copyWith(
-          {String? userPk,
-          String? otp,
-          PgDateTime? expiry,
-          DataInfoKeys? type}) =>
+          {String? userPk, String? otp, PgDateTime? expiry, OtpType? type}) =>
       OtpRecord(
         userPk: userPk ?? this.userPk,
         otp: otp ?? this.otp,
@@ -183,7 +180,7 @@ class OtpRecordsCompanion extends UpdateCompanion<OtpRecord> {
   final Value<String> userPk;
   final Value<String> otp;
   final Value<PgDateTime> expiry;
-  final Value<DataInfoKeys> type;
+  final Value<OtpType> type;
   final Value<int> rowid;
   const OtpRecordsCompanion({
     this.userPk = const Value.absent(),
@@ -196,7 +193,7 @@ class OtpRecordsCompanion extends UpdateCompanion<OtpRecord> {
     required String userPk,
     required String otp,
     required PgDateTime expiry,
-    required DataInfoKeys type,
+    required OtpType type,
     this.rowid = const Value.absent(),
   })  : userPk = Value(userPk),
         otp = Value(otp),
@@ -222,7 +219,7 @@ class OtpRecordsCompanion extends UpdateCompanion<OtpRecord> {
       {Value<String>? userPk,
       Value<String>? otp,
       Value<PgDateTime>? expiry,
-      Value<DataInfoKeys>? type,
+      Value<OtpType>? type,
       Value<int>? rowid}) {
     return OtpRecordsCompanion(
       userPk: userPk ?? this.userPk,

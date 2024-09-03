@@ -4,9 +4,8 @@ package kyc;
 
 message KycRequest{
   string secretKey = 1;
-  string partnerToken = 2;
-  string userAuthPk = 3;
-  string userPublicKey = 4;
+  string userAuthPk = 2;
+  string userPublicKey = 3;
 }
 
 message KycResponse{

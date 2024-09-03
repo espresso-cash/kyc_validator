@@ -18,15 +18,14 @@ const SendOtpRequest$json = {
   '1': 'SendOtpRequest',
   '2': [
     {'1': 'secretKey', '3': 1, '4': 1, '5': 9, '10': 'secretKey'},
-    {'1': 'partnerToken', '3': 2, '4': 1, '5': 9, '10': 'partnerToken'},
-    {'1': 'userPk', '3': 3, '4': 1, '5': 9, '10': 'userPk'},
+    {'1': 'userPk', '3': 2, '4': 1, '5': 9, '10': 'userPk'},
   ],
 };
 
 /// Descriptor for `SendOtpRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendOtpRequestDescriptor = $convert.base64Decode(
-    'Cg5TZW5kT3RwUmVxdWVzdBIcCglzZWNyZXRLZXkYASABKAlSCXNlY3JldEtleRIiCgxwYXJ0bm'
-    'VyVG9rZW4YAiABKAlSDHBhcnRuZXJUb2tlbhIWCgZ1c2VyUGsYAyABKAlSBnVzZXJQaw==');
+    'Cg5TZW5kT3RwUmVxdWVzdBIcCglzZWNyZXRLZXkYASABKAlSCXNlY3JldEtleRIWCgZ1c2VyUG'
+    'sYAiABKAlSBnVzZXJQaw==');
 
 @$core.Deprecated('Use sendOtpResponseDescriptor instead')
 const SendOtpResponse$json = {
@@ -46,14 +45,16 @@ const VerifyOtpRequest$json = {
   '2': [
     {'1': 'identifier', '3': 1, '4': 1, '5': 9, '10': 'identifier'},
     {'1': 'userPk', '3': 2, '4': 1, '5': 9, '10': 'userPk'},
-    {'1': 'otp', '3': 3, '4': 1, '5': 9, '10': 'otp'},
+    {'1': 'secretKey', '3': 3, '4': 1, '5': 9, '10': 'secretKey'},
+    {'1': 'otp', '3': 4, '4': 1, '5': 9, '10': 'otp'},
   ],
 };
 
 /// Descriptor for `VerifyOtpRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verifyOtpRequestDescriptor = $convert.base64Decode(
     'ChBWZXJpZnlPdHBSZXF1ZXN0Eh4KCmlkZW50aWZpZXIYASABKAlSCmlkZW50aWZpZXISFgoGdX'
-    'NlclBrGAIgASgJUgZ1c2VyUGsSEAoDb3RwGAMgASgJUgNvdHA=');
+    'NlclBrGAIgASgJUgZ1c2VyUGsSHAoJc2VjcmV0S2V5GAMgASgJUglzZWNyZXRLZXkSEAoDb3Rw'
+    'GAQgASgJUgNvdHA=');
 
 @$core.Deprecated('Use verifyOtpResponseDescriptor instead')
 const VerifyOtpResponse$json = {

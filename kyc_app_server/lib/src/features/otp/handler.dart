@@ -10,7 +10,6 @@ class OtpEndpoint extends OtpServiceBase {
     final service = sl<OtpService>();
 
     await service.sendOtpByEmail(
-      partnerToken: request.partnerToken,
       secretKey: request.secretKey,
       userPK: request.userPk,
     );
@@ -24,7 +23,6 @@ class OtpEndpoint extends OtpServiceBase {
     final service = sl<OtpService>();
 
     await service.sendOtpBySms(
-      partnerToken: request.partnerToken,
       secretKey: request.secretKey,
       userPK: request.userPk,
     );
@@ -39,6 +37,7 @@ class OtpEndpoint extends OtpServiceBase {
 
     final isValid = await service.verifyOtp(
       userPK: request.userPk,
+      secretKey: request.secretKey,
       otp: request.otp,
       identifier: request.identifier,
     );

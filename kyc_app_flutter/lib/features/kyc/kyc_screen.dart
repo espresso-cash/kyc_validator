@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kyc_app_client/kyc_app_client.dart';
+import 'package:kyc_client_dart/kyc_client_dart.dart';
 import 'package:provider/provider.dart';
 
 import '../../ui/app_bar.dart';
@@ -18,7 +19,6 @@ import '../encryption/state.dart';
 import '../id_picker/id_picker.dart';
 import 'camera_screen.dart';
 import 'data/client.dart';
-import 'model/kyc_model.dart';
 
 class KycPage extends StatefulWidget {
   const KycPage({super.key});
@@ -69,7 +69,7 @@ class _KycPageState extends State<KycPage> {
           final state = context.read<WalletAppState>();
 
           await state.updateInfo(
-            data: KycUserInfo(
+            data: V1UserData(
               firstName: _firstNameController.text,
               middleName: _middleNameController.text,
               lastName: _lastNameController.text,
@@ -81,24 +81,18 @@ class _KycPageState extends State<KycPage> {
             photo: photo,
           );
 
-          await state.generateValidatorToken(validatorAuthPk);
-
           await kycClient.requestKyc(
             KycRequest(
               secretKey: state.rawSecretKey,
-              partnerToken: state.validatorToken,
               userAuthPk: state.authPublicKey,
               userPublicKey: state.userPublicKey,
             ),
           );
 
-          await state.generatePartnerToken(partnerAuthPk);
-
           await partnerClient.sendUserData(
             SendUserDataRequest(
               user: User(
                 secretKey: state.rawSecretKey,
-                partnerToken: state.partnerToken,
                 userPk: state.authPublicKey,
               ),
               partnerPk: partnerAuthPk,

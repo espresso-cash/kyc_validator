@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:cryptography/cryptography.dart' hide SecretBox;
 import 'package:injectable/injectable.dart';
-import 'package:kyc_app_server/src/features/validator/models/kyc_model.dart';
 import 'package:kyc_client_dart/kyc_client_dart.dart';
 import 'package:solana/base58.dart';
 
@@ -24,7 +21,12 @@ class PartnerKycService {
     final keyPair =
         await Ed25519().newKeyPairFromSeed(base58decode(validatorSeed));
 
-    _client = KycPartnerClient(authKeyPair: keyPair);
+    _client = KycPartnerClient(
+      authKeyPair: keyPair,
+      baseUrl: 'https://kyc-backend-oxvpvdtvzq-ew.a.run.app/',
+    );
+
+    await _client.init();
 
     _authPublicKey = await keyPair
         .extractPublicKey()
@@ -32,61 +34,39 @@ class PartnerKycService {
         .then(base58encode);
   }
 
-  Future<void> generateAuthToken(String partnerToken, String secretKey) async {
-    await _client.init(partnerToken: partnerToken, secretKey: secretKey);
-  }
-
-  Future<Map<String, String>> fetchUserInfo({
-    required List<DataInfoKeys> keys,
+  Future<V1UserData> fetchUserInfo({
     required String secretKey,
     required String userPK,
   }) async {
     final data = await _client.getData(
-      keys: keys,
       userPK: userPK,
       secretKey: secretKey,
     );
 
-    return data;
+    return V1UserData.fromJson(data);
   }
 
-  Future<KycUserInfo> fetchDataForSmile({
-    required String secretKey,
+  Future<void> setValidationResult({
+    required String message,
     required String userPK,
+    required String secretKey,
   }) async {
-    final data = await _client.getData(
-      keys: [
-        DataInfoKeys.jobId,
-        DataInfoKeys.firstName,
-        DataInfoKeys.middleName,
-        DataInfoKeys.lastName,
-        DataInfoKeys.dateOfBirth,
-        DataInfoKeys.countryCode,
-        DataInfoKeys.idType,
-        DataInfoKeys.idNumber
-      ],
-      userPK: userPK,
-      secretKey: secretKey,
-    );
-
-    final selfie = await _client.download(
-      key: DataFileKeys.photo,
-      userPK: userPK,
-      secretKey: secretKey,
-    );
-
-    final kyc = KycUserInfo.fromDataInfoKeys(data);
-    return kyc.copyWith(selfie: base64Encode(selfie));
-  }
-
-  Future<void> setValidationResult(String message) async {
     await _client.setValidationResult(
-      key: ValidationResultKeys.smileId,
-      value: message,
+      value: V1ValidationData(kycSmileId: message),
+      userPK: userPK,
+      secretKey: secretKey,
     );
   }
 
-  Future<void> validateField(ValidationResultKeys key, String value) async {
-    await _client.validateField(key, value);
+  Future<void> validateField({
+    required V1ValidationData value,
+    required String userPK,
+    required String secretKey,
+  }) async {
+    await _client.validateField(
+      value: value,
+      userPK: userPK,
+      secretKey: secretKey,
+    );
   }
 }

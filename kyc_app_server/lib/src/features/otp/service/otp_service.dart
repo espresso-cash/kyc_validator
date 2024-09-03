@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:injectable/injectable.dart';
+import 'package:kyc_app_server/src/db/db.dart';
 import 'package:kyc_app_server/src/features/otp/data/otp_repository.dart';
 import 'package:kyc_app_server/src/features/twilio/client.dart';
 import 'package:kyc_app_server/src/features/validator/service/kyc_client.dart';
@@ -19,7 +20,6 @@ class OtpService {
   final OtpRepository _otpRepository;
 
   Future<void> sendOtpByEmail({
-    required String partnerToken,
     required String secretKey,
     required String userPK,
   }) async {
@@ -27,17 +27,15 @@ class OtpService {
     _otpRepository.createOtpRecord(
       userPK: userPK,
       otp: otp,
-      type: DataInfoKeys.email,
+      type: OtpType.email,
     );
 
-    await _kycClient.generateAuthToken(partnerToken, secretKey);
     final data = await _kycClient.fetchUserInfo(
-      keys: [DataInfoKeys.email],
       secretKey: secretKey,
       userPK: userPK,
     );
 
-    final receiver = data[DataInfoKeys.email.value] ?? '-';
+    final receiver = data.email ?? '-';
 
     final smtpServer = SmtpServer(
       smtpHost,
@@ -61,7 +59,6 @@ class OtpService {
   }
 
   Future<void> sendOtpBySms({
-    required String partnerToken,
     required String secretKey,
     required String userPK,
   }) async {
@@ -69,16 +66,15 @@ class OtpService {
     _otpRepository.createOtpRecord(
       userPK: userPK,
       otp: otp,
-      type: DataInfoKeys.phone,
+      type: OtpType.phone,
     );
 
     final data = await _kycClient.fetchUserInfo(
-      keys: [DataInfoKeys.phone],
       secretKey: secretKey,
       userPK: userPK,
     );
 
-    final receiver = data[DataInfoKeys.phone.value] ?? '-';
+    final receiver = data.phone ?? '-';
 
     final sms = SendSmsRequestDto(
       to: receiver,
@@ -96,6 +92,7 @@ class OtpService {
 
   Future<bool> verifyOtp({
     required String userPK,
+    required String secretKey,
     required String identifier,
     required String otp,
   }) async {
@@ -106,7 +103,10 @@ class OtpService {
         otpMessage.expiry.dateTime.isAfter(DateTime.now());
     if (isValid) {
       await _kycClient.validateField(
-          identifier.toValidationResultKeys(), otpMessage.otp);
+        value: V1ValidationData(),
+        userPK: userPK,
+        secretKey: secretKey,
+      );
       _otpRepository.deleteOtpRecord(userPK: userPK, type: identifier);
     }
 
@@ -117,30 +117,4 @@ class OtpService {
 String _generateVerificationCode() {
   final rng = Random();
   return List.generate(6, (_) => rng.nextInt(10)).join();
-}
-
-extension DataInfoKeysExtension on String {
-  DataInfoKeys toDataInfoKeys() {
-    switch (this) {
-      case 'email':
-        return DataInfoKeys.email;
-      case 'phone':
-        return DataInfoKeys.phone;
-      default:
-        throw ArgumentError('Invalid DataInfoKeys value: $this');
-    }
-  }
-}
-
-extension DataInfoKeysToValidationResultKeys on String {
-  ValidationResultKeys toValidationResultKeys() {
-    switch (this) {
-      case 'email':
-        return ValidationResultKeys.email;
-      case 'phone':
-        return ValidationResultKeys.phone;
-      default:
-        throw ArgumentError('Invalid DataInfoKeys value: $this');
-    }
-  }
 }

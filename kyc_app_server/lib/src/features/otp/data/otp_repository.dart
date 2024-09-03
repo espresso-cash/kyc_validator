@@ -2,7 +2,6 @@ import 'package:drift/drift.dart';
 import 'package:drift_postgres/drift_postgres.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kyc_app_server/src/db/db.dart';
-import 'package:kyc_client_dart/kyc_client_dart.dart';
 
 @injectable
 class OtpRepository {
@@ -22,7 +21,7 @@ class OtpRepository {
   Future<void> createOtpRecord({
     required String userPK,
     required String otp,
-    required DataInfoKeys type,
+    required OtpType type,
   }) async {
     final otpCompanion = OtpRecordsCompanion(
       userPk: Value(userPK),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../ui/app_bar.dart';
 import '../../../ui/button.dart';
+import '../../../ui/snackbar.dart';
 import '../../email_validation/screens/email_input_screen.dart';
+import '../../encryption/state.dart';
 import '../../kyc/kyc_screen.dart';
 import '../../phone_validation/screens/phone_input_screen.dart';
 
@@ -39,6 +42,24 @@ class HomeScreen extends StatelessWidget {
                     width: double.infinity,
                     text: 'Phone',
                     onPressed: () => PhoneInputScreen.push(context),
+                  ),
+                  const Spacer(),
+                  Consumer<WalletAppState>(
+                    builder: (context, state, child) => CpButton(
+                      text: 'Grant Partner Access',
+                      onPressed: () async {
+                        await context
+                            .read<WalletAppState>()
+                            .grantPartnerAccess(state.validatorPK);
+
+                        if (!context.mounted) return;
+
+                        showCpSnackbar(
+                          context,
+                          message: 'Granted partner access',
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

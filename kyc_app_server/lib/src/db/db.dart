@@ -13,11 +13,13 @@ class OtpRecords extends Table {
   TextColumn get userPk => text()();
   TextColumn get otp => text()();
   TimestampColumn get expiry => customType(PgTypes.timestampNoTimezone)();
-  TextColumn get type => textEnum<DataInfoKeys>()();
+  TextColumn get type => textEnum<OtpType>()();
 
   @override
   Set<Column> get primaryKey => {userPk, type};
 }
+
+enum OtpType { email, phone }
 
 class ValidatedUsers extends Table {
   const ValidatedUsers();

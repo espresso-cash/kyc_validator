@@ -40,12 +40,9 @@ class _EmailInputScreenState extends State<EmailInputScreen> {
 
           await state.updateEmail(email);
 
-          await state.generateValidatorToken(validatorAuthPk);
-
           await otpClient.sendOtpByEmail(
             SendOtpRequest(
               secretKey: state.rawSecretKey,
-              partnerToken: state.validatorToken,
               userPk: state.authPublicKey,
             ),
           );

@@ -4,8 +4,7 @@ package kyc;
 
 message SendOtpRequest {
   string secretKey = 1;
-  string partnerToken = 2;
-  string userPk = 3;
+  string userPk = 2;
 }
 
 message SendOtpResponse {
@@ -15,7 +14,8 @@ message SendOtpResponse {
 message VerifyOtpRequest {
   string identifier = 1;
   string userPk = 2;
-  string otp = 3;
+  string secretKey = 3;
+  string otp = 4;
 }
 
 message VerifyOtpResponse {
