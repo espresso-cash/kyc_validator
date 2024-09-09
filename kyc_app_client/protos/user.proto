@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package kyc;
+package validator;
 
 message User {
   string secretKey = 1;
@@ -25,7 +25,7 @@ message FetchPartnerUsersResponse {
   repeated User users = 1;
 }
 
-service PartnerService {
+service UserService {
   rpc SendUserData (SendUserDataRequest) returns (SendUserDataResponse); 
   rpc FetchUserData (FetchPartnerUsersRequest) returns (FetchPartnerUsersResponse);
 }

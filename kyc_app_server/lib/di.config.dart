@@ -16,10 +16,10 @@ import 'package:kyc_app_server/src/features/otp/data/otp_repository.dart'
     as _i853;
 import 'package:kyc_app_server/src/features/otp/service/otp_service.dart'
     as _i739;
-import 'package:kyc_app_server/src/features/partner/data/partner_repository.dart'
-    as _i1056;
 import 'package:kyc_app_server/src/features/smile/client.dart' as _i91;
 import 'package:kyc_app_server/src/features/twilio/client.dart' as _i245;
+import 'package:kyc_app_server/src/features/user/data/user_repository.dart'
+    as _i142;
 import 'package:kyc_app_server/src/features/validator/service/kyc_client.dart'
     as _i427;
 import 'package:kyc_app_server/src/features/validator/service/validator_service.dart'
@@ -56,8 +56,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i853.OtpRepository>(
         () => _i853.OtpRepository(gh<_i679.AppDatabase>()));
-    gh.factory<_i1056.PartnerRepository>(
-        () => _i1056.PartnerRepository(gh<_i679.AppDatabase>()));
+    gh.factory<_i142.UserRepository>(
+        () => _i142.UserRepository(gh<_i679.AppDatabase>()));
     gh.singleton<_i739.OtpService>(() => _i739.OtpService(
           gh<_i245.TwilioApiClient>(),
           gh<_i427.PartnerKycService>(),

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => PartnerAppState(partnerClient)..init(),
+          create: (context) => PartnerAppState(userClient)..init(),
           lazy: false,
         ),
       ],

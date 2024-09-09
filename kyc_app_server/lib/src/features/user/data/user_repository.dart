@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:kyc_app_server/src/db/db.dart';
 
 @injectable
-class PartnerRepository {
-  const PartnerRepository(this._db);
+class UserRepository {
+  const UserRepository(this._db);
 
   final AppDatabase _db;
 

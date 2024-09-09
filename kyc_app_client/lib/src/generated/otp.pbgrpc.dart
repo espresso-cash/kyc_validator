@@ -19,18 +19,18 @@ import 'otp.pb.dart' as $1;
 
 export 'otp.pb.dart';
 
-@$pb.GrpcServiceName('kyc.OtpService')
+@$pb.GrpcServiceName('validator.OtpService')
 class OtpServiceClient extends $grpc.Client {
   static final _$sendOtpByEmail = $grpc.ClientMethod<$1.SendOtpRequest, $1.SendOtpResponse>(
-      '/kyc.OtpService/SendOtpByEmail',
+      '/validator.OtpService/SendOtpByEmail',
       ($1.SendOtpRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.SendOtpResponse.fromBuffer(value));
   static final _$sendOtpBySms = $grpc.ClientMethod<$1.SendOtpRequest, $1.SendOtpResponse>(
-      '/kyc.OtpService/SendOtpBySms',
+      '/validator.OtpService/SendOtpBySms',
       ($1.SendOtpRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.SendOtpResponse.fromBuffer(value));
   static final _$verifyOtp = $grpc.ClientMethod<$1.VerifyOtpRequest, $1.VerifyOtpResponse>(
-      '/kyc.OtpService/VerifyOtp',
+      '/validator.OtpService/VerifyOtp',
       ($1.VerifyOtpRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.VerifyOtpResponse.fromBuffer(value));
 
@@ -53,9 +53,9 @@ class OtpServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('kyc.OtpService')
+@$pb.GrpcServiceName('validator.OtpService')
 abstract class OtpServiceBase extends $grpc.Service {
-  $core.String get $name => 'kyc.OtpService';
+  $core.String get $name => 'validator.OtpService';
 
   OtpServiceBase() {
     $addMethod($grpc.ServiceMethod<$1.SendOtpRequest, $1.SendOtpResponse>(

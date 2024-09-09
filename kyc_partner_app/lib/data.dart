@@ -10,4 +10,4 @@ final channel = ClientChannel(
   ),
 );
 
-final partnerClient = PartnerServiceClient(channel);
+final userClient = UserServiceClient(channel);

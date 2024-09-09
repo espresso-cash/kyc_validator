@@ -11,4 +11,4 @@ final channel = ClientChannel(
 );
 final kycClient = KycServiceClient(channel);
 final otpClient = OtpServiceClient(channel);
-final partnerClient = PartnerServiceClient(channel);
+final userClient = UserServiceClient(channel);

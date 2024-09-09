@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: partner.proto
+//  source: user.proto
 //
 // @dart = 2.12
 
@@ -15,22 +15,22 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'partner.pb.dart' as $2;
+import 'user.pb.dart' as $2;
 
-export 'partner.pb.dart';
+export 'user.pb.dart';
 
-@$pb.GrpcServiceName('kyc.PartnerService')
-class PartnerServiceClient extends $grpc.Client {
+@$pb.GrpcServiceName('validator.UserService')
+class UserServiceClient extends $grpc.Client {
   static final _$sendUserData = $grpc.ClientMethod<$2.SendUserDataRequest, $2.SendUserDataResponse>(
-      '/kyc.PartnerService/SendUserData',
+      '/validator.UserService/SendUserData',
       ($2.SendUserDataRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.SendUserDataResponse.fromBuffer(value));
   static final _$fetchUserData = $grpc.ClientMethod<$2.FetchPartnerUsersRequest, $2.FetchPartnerUsersResponse>(
-      '/kyc.PartnerService/FetchUserData',
+      '/validator.UserService/FetchUserData',
       ($2.FetchPartnerUsersRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.FetchPartnerUsersResponse.fromBuffer(value));
 
-  PartnerServiceClient($grpc.ClientChannel channel,
+  UserServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options,
@@ -45,11 +45,11 @@ class PartnerServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('kyc.PartnerService')
-abstract class PartnerServiceBase extends $grpc.Service {
-  $core.String get $name => 'kyc.PartnerService';
+@$pb.GrpcServiceName('validator.UserService')
+abstract class UserServiceBase extends $grpc.Service {
+  $core.String get $name => 'validator.UserService';
 
-  PartnerServiceBase() {
+  UserServiceBase() {
     $addMethod($grpc.ServiceMethod<$2.SendUserDataRequest, $2.SendUserDataResponse>(
         'SendUserData',
         sendUserData_Pre,

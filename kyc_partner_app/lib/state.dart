@@ -8,7 +8,7 @@ import 'package:kyc_partner_app/model/kyc_model.dart';
 import 'package:solana/solana.dart';
 
 class PartnerAppState extends ChangeNotifier {
-  final PartnerServiceClient _backendClient;
+  final UserServiceClient _backendClient;
   late KycPartnerClient _partnerClient;
 
   List<KycUsers> _users = [];

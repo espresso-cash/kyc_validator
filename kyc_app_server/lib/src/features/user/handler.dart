@@ -1,15 +1,15 @@
 import 'package:grpc/grpc.dart';
 import 'package:kyc_app_client/kyc_app_client.dart';
-import 'package:kyc_app_server/src/features/partner/data/partner_repository.dart';
+import 'package:kyc_app_server/src/features/user/data/user_repository.dart';
 
 import '../../../di.dart';
 
-class PartnerEndpoint extends PartnerServiceBase {
+class UserEndpoint extends UserServiceBase {
   @override
   Future<FetchPartnerUsersResponse> fetchUserData(
       ServiceCall call, FetchPartnerUsersRequest request) async {
     final users =
-        await sl<PartnerRepository>().getUsersForPartner(request.partnerPk);
+        await sl<UserRepository>().getUsersForPartner(request.partnerPk);
 
     return FetchPartnerUsersResponse(
       users: users
@@ -25,7 +25,7 @@ class PartnerEndpoint extends PartnerServiceBase {
   @override
   Future<SendUserDataResponse> sendUserData(
       ServiceCall call, SendUserDataRequest request) async {
-    await sl<PartnerRepository>().saveUser(
+    await sl<UserRepository>().saveUser(
       userPK: request.user.userPk,
       partnerToken: request.user.partnerToken,
       secretKey: request.user.secretKey,

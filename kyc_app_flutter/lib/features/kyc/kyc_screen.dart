@@ -89,7 +89,7 @@ class _KycPageState extends State<KycPage> {
             ),
           );
 
-          await partnerClient.sendUserData(
+          await userClient.sendUserData(
             SendUserDataRequest(
               user: User(
                 secretKey: state.rawSecretKey,

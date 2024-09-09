@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: partner.proto
+//  source: user.proto
 //
 // @dart = 2.12
 
@@ -32,15 +32,15 @@ final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
 const SendUserDataRequest$json = {
   '1': 'SendUserDataRequest',
   '2': [
-    {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.kyc.User', '10': 'user'},
+    {'1': 'user', '3': 1, '4': 1, '5': 11, '6': '.validator.User', '10': 'user'},
     {'1': 'partnerPk', '3': 2, '4': 1, '5': 9, '10': 'partnerPk'},
   ],
 };
 
 /// Descriptor for `SendUserDataRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendUserDataRequestDescriptor = $convert.base64Decode(
-    'ChNTZW5kVXNlckRhdGFSZXF1ZXN0Eh0KBHVzZXIYASABKAsyCS5reWMuVXNlclIEdXNlchIcCg'
-    'lwYXJ0bmVyUGsYAiABKAlSCXBhcnRuZXJQaw==');
+    'ChNTZW5kVXNlckRhdGFSZXF1ZXN0EiMKBHVzZXIYASABKAsyDy52YWxpZGF0b3IuVXNlclIEdX'
+    'NlchIcCglwYXJ0bmVyUGsYAiABKAlSCXBhcnRuZXJQaw==');
 
 @$core.Deprecated('Use sendUserDataResponseDescriptor instead')
 const SendUserDataResponse$json = {
@@ -71,12 +71,12 @@ final $typed_data.Uint8List fetchPartnerUsersRequestDescriptor = $convert.base64
 const FetchPartnerUsersResponse$json = {
   '1': 'FetchPartnerUsersResponse',
   '2': [
-    {'1': 'users', '3': 1, '4': 3, '5': 11, '6': '.kyc.User', '10': 'users'},
+    {'1': 'users', '3': 1, '4': 3, '5': 11, '6': '.validator.User', '10': 'users'},
   ],
 };
 
 /// Descriptor for `FetchPartnerUsersResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List fetchPartnerUsersResponseDescriptor = $convert.base64Decode(
-    'ChlGZXRjaFBhcnRuZXJVc2Vyc1Jlc3BvbnNlEh8KBXVzZXJzGAEgAygLMgkua3ljLlVzZXJSBX'
-    'VzZXJz');
+    'ChlGZXRjaFBhcnRuZXJVc2Vyc1Jlc3BvbnNlEiUKBXVzZXJzGAEgAygLMg8udmFsaWRhdG9yLl'
+    'VzZXJSBXVzZXJz');
 

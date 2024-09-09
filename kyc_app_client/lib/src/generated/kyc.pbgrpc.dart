@@ -19,10 +19,10 @@ import 'kyc.pb.dart' as $0;
 
 export 'kyc.pb.dart';
 
-@$pb.GrpcServiceName('kyc.KycService')
+@$pb.GrpcServiceName('validator.KycService')
 class KycServiceClient extends $grpc.Client {
   static final _$requestKyc = $grpc.ClientMethod<$0.KycRequest, $0.KycResponse>(
-      '/kyc.KycService/RequestKyc',
+      '/validator.KycService/RequestKyc',
       ($0.KycRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.KycResponse.fromBuffer(value));
 
@@ -37,9 +37,9 @@ class KycServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('kyc.KycService')
+@$pb.GrpcServiceName('validator.KycService')
 abstract class KycServiceBase extends $grpc.Service {
-  $core.String get $name => 'kyc.KycService';
+  $core.String get $name => 'validator.KycService';
 
   KycServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.KycRequest, $0.KycResponse>(
