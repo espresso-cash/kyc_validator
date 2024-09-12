@@ -12,7 +12,6 @@ Future<void> main(List<String> args) async {
       KycEndpoint(),
       OtpEndpoint(),
       UserEndpoint(),
-      OtpEndpoint(),
     ],
     codecRegistry: CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
   );
