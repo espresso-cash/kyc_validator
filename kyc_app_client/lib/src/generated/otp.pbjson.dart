@@ -13,6 +13,20 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use otpTypeDescriptor instead')
+const OtpType$json = {
+  '1': 'OtpType',
+  '2': [
+    {'1': 'unsupported', '2': 0},
+    {'1': 'email', '2': 1},
+    {'1': 'phone', '2': 2},
+  ],
+};
+
+/// Descriptor for `OtpType`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List otpTypeDescriptor = $convert.base64Decode(
+    'CgdPdHBUeXBlEg8KC3Vuc3VwcG9ydGVkEAASCQoFZW1haWwQARIJCgVwaG9uZRAC');
+
 @$core.Deprecated('Use sendOtpRequestDescriptor instead')
 const SendOtpRequest$json = {
   '1': 'SendOtpRequest',
@@ -43,7 +57,7 @@ final $typed_data.Uint8List sendOtpResponseDescriptor = $convert.base64Decode(
 const VerifyOtpRequest$json = {
   '1': 'VerifyOtpRequest',
   '2': [
-    {'1': 'identifier', '3': 1, '4': 1, '5': 9, '10': 'identifier'},
+    {'1': 'identifier', '3': 1, '4': 1, '5': 14, '6': '.validator.OtpType', '10': 'identifier'},
     {'1': 'userPk', '3': 2, '4': 1, '5': 9, '10': 'userPk'},
     {'1': 'secretKey', '3': 3, '4': 1, '5': 9, '10': 'secretKey'},
     {'1': 'otp', '3': 4, '4': 1, '5': 9, '10': 'otp'},
@@ -52,9 +66,9 @@ const VerifyOtpRequest$json = {
 
 /// Descriptor for `VerifyOtpRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List verifyOtpRequestDescriptor = $convert.base64Decode(
-    'ChBWZXJpZnlPdHBSZXF1ZXN0Eh4KCmlkZW50aWZpZXIYASABKAlSCmlkZW50aWZpZXISFgoGdX'
-    'NlclBrGAIgASgJUgZ1c2VyUGsSHAoJc2VjcmV0S2V5GAMgASgJUglzZWNyZXRLZXkSEAoDb3Rw'
-    'GAQgASgJUgNvdHA=');
+    'ChBWZXJpZnlPdHBSZXF1ZXN0EjIKCmlkZW50aWZpZXIYASABKA4yEi52YWxpZGF0b3IuT3RwVH'
+    'lwZVIKaWRlbnRpZmllchIWCgZ1c2VyUGsYAiABKAlSBnVzZXJQaxIcCglzZWNyZXRLZXkYAyAB'
+    'KAlSCXNlY3JldEtleRIQCgNvdHAYBCABKAlSA290cA==');
 
 @$core.Deprecated('Use verifyOtpResponseDescriptor instead')
 const VerifyOtpResponse$json = {

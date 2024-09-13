@@ -39,7 +39,7 @@ class OtpEndpoint extends OtpServiceBase {
       userPK: request.userPk,
       secretKey: request.secretKey,
       otp: request.otp,
-      identifier: request.identifier,
+      identifier: request.identifier.name,
     );
 
     return VerifyOtpResponse()..isValid = isValid;

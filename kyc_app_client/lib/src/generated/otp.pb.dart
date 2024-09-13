@@ -13,6 +13,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'otp.pbenum.dart';
+
+export 'otp.pbenum.dart';
+
 class SendOtpRequest extends $pb.GeneratedMessage {
   factory SendOtpRequest({
     $core.String? secretKey,
@@ -129,7 +133,7 @@ class SendOtpResponse extends $pb.GeneratedMessage {
 
 class VerifyOtpRequest extends $pb.GeneratedMessage {
   factory VerifyOtpRequest({
-    $core.String? identifier,
+    OtpType? identifier,
     $core.String? userPk,
     $core.String? secretKey,
     $core.String? otp,
@@ -154,7 +158,7 @@ class VerifyOtpRequest extends $pb.GeneratedMessage {
   factory VerifyOtpRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'VerifyOtpRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'validator'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'identifier')
+    ..e<OtpType>(1, _omitFieldNames ? '' : 'identifier', $pb.PbFieldType.OE, defaultOrMaker: OtpType.unsupported, valueOf: OtpType.valueOf, enumValues: OtpType.values)
     ..aOS(2, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
     ..aOS(3, _omitFieldNames ? '' : 'secretKey', protoName: 'secretKey')
     ..aOS(4, _omitFieldNames ? '' : 'otp')
@@ -183,9 +187,9 @@ class VerifyOtpRequest extends $pb.GeneratedMessage {
   static VerifyOtpRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get identifier => $_getSZ(0);
+  OtpType get identifier => $_getN(0);
   @$pb.TagNumber(1)
-  set identifier($core.String v) { $_setString(0, v); }
+  set identifier(OtpType v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasIdentifier() => $_has(0);
   @$pb.TagNumber(1)

@@ -30,9 +30,12 @@ class _EmailConfirmationScreenState extends State<EmailConfirmationScreen> {
   bool get _isValid => _controller.text.length == 6;
 
   Future<void> _handleConfirm() async {
+    final state = context.read<WalletAppState>();
+
     final response = await otpClient.verifyOtp(
       VerifyOtpRequest(
-        identifier: 'email',
+        secretKey: state.rawSecretKey,
+        identifier: OtpType.email,
         otp: _controller.text,
         userPk: context.read<WalletAppState>().authPublicKey,
       ),

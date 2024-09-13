@@ -11,8 +11,14 @@ message SendOtpResponse {
   string status = 1;
 }
 
+enum OtpType {
+  unsupported = 0;
+  email = 1;
+  phone = 2;
+}
+
 message VerifyOtpRequest {
-  string identifier = 1;
+  OtpType identifier = 1;
   string userPk = 2;
   string secretKey = 3;
   string otp = 4;
