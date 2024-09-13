@@ -25,7 +25,6 @@ class ValidatedUsers extends Table {
   const ValidatedUsers();
 
   TextColumn get userPk => text()();
-  TextColumn get partnerToken => text()();
   TextColumn get secretKey => text()();
   TextColumn get partnerPk => text()();
 
