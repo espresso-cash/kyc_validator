@@ -4,8 +4,7 @@ package validator;
 
 message User {
   string secretKey = 1;
-  string partnerToken = 2;
-  string userPk = 3;
+  string userPk = 2;
 }
 
 message SendUserDataRequest{
@@ -13,7 +12,12 @@ message SendUserDataRequest{
   string partnerPk = 2;
 }
 
-message SendUserDataResponse {
+message DeleteUserDataRequest { 
+  string userPk = 1;
+  string partnerPk = 2;
+}
+
+message CommonResponse {
   bool success = 1;
 }
 
@@ -26,6 +30,7 @@ message FetchPartnerUsersResponse {
 }
 
 service UserService {
-  rpc SendUserData (SendUserDataRequest) returns (SendUserDataResponse); 
+  rpc SendUserData (SendUserDataRequest) returns (CommonResponse); 
+  rpc DeleteUserData (DeleteUserDataRequest) returns (CommonResponse);
   rpc FetchUserData (FetchPartnerUsersRequest) returns (FetchPartnerUsersResponse);
 }

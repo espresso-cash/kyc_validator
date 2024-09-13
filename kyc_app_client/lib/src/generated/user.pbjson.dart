@@ -18,15 +18,14 @@ const User$json = {
   '1': 'User',
   '2': [
     {'1': 'secretKey', '3': 1, '4': 1, '5': 9, '10': 'secretKey'},
-    {'1': 'partnerToken', '3': 2, '4': 1, '5': 9, '10': 'partnerToken'},
-    {'1': 'userPk', '3': 3, '4': 1, '5': 9, '10': 'userPk'},
+    {'1': 'userPk', '3': 2, '4': 1, '5': 9, '10': 'userPk'},
   ],
 };
 
 /// Descriptor for `User`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userDescriptor = $convert.base64Decode(
-    'CgRVc2VyEhwKCXNlY3JldEtleRgBIAEoCVIJc2VjcmV0S2V5EiIKDHBhcnRuZXJUb2tlbhgCIA'
-    'EoCVIMcGFydG5lclRva2VuEhYKBnVzZXJQaxgDIAEoCVIGdXNlclBr');
+    'CgRVc2VyEhwKCXNlY3JldEtleRgBIAEoCVIJc2VjcmV0S2V5EhYKBnVzZXJQaxgCIAEoCVIGdX'
+    'NlclBr');
 
 @$core.Deprecated('Use sendUserDataRequestDescriptor instead')
 const SendUserDataRequest$json = {
@@ -42,17 +41,31 @@ final $typed_data.Uint8List sendUserDataRequestDescriptor = $convert.base64Decod
     'ChNTZW5kVXNlckRhdGFSZXF1ZXN0EiMKBHVzZXIYASABKAsyDy52YWxpZGF0b3IuVXNlclIEdX'
     'NlchIcCglwYXJ0bmVyUGsYAiABKAlSCXBhcnRuZXJQaw==');
 
-@$core.Deprecated('Use sendUserDataResponseDescriptor instead')
-const SendUserDataResponse$json = {
-  '1': 'SendUserDataResponse',
+@$core.Deprecated('Use deleteUserDataRequestDescriptor instead')
+const DeleteUserDataRequest$json = {
+  '1': 'DeleteUserDataRequest',
+  '2': [
+    {'1': 'userPk', '3': 1, '4': 1, '5': 9, '10': 'userPk'},
+    {'1': 'partnerPk', '3': 2, '4': 1, '5': 9, '10': 'partnerPk'},
+  ],
+};
+
+/// Descriptor for `DeleteUserDataRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List deleteUserDataRequestDescriptor = $convert.base64Decode(
+    'ChVEZWxldGVVc2VyRGF0YVJlcXVlc3QSFgoGdXNlclBrGAEgASgJUgZ1c2VyUGsSHAoJcGFydG'
+    '5lclBrGAIgASgJUglwYXJ0bmVyUGs=');
+
+@$core.Deprecated('Use commonResponseDescriptor instead')
+const CommonResponse$json = {
+  '1': 'CommonResponse',
   '2': [
     {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
   ],
 };
 
-/// Descriptor for `SendUserDataResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sendUserDataResponseDescriptor = $convert.base64Decode(
-    'ChRTZW5kVXNlckRhdGFSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
+/// Descriptor for `CommonResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List commonResponseDescriptor = $convert.base64Decode(
+    'Cg5Db21tb25SZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNz');
 
 @$core.Deprecated('Use fetchPartnerUsersRequestDescriptor instead')
 const FetchPartnerUsersRequest$json = {

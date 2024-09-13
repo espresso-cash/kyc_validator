@@ -277,12 +277,6 @@ class $ValidatedUsersTable extends ValidatedUsers
   late final GeneratedColumn<String> userPk = GeneratedColumn<String>(
       'user_pk', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _partnerTokenMeta =
-      const VerificationMeta('partnerToken');
-  @override
-  late final GeneratedColumn<String> partnerToken = GeneratedColumn<String>(
-      'partner_token', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _secretKeyMeta =
       const VerificationMeta('secretKey');
   @override
@@ -296,8 +290,7 @@ class $ValidatedUsersTable extends ValidatedUsers
       'partner_pk', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns =>
-      [userPk, partnerToken, secretKey, partnerPk];
+  List<GeneratedColumn> get $columns => [userPk, secretKey, partnerPk];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -313,14 +306,6 @@ class $ValidatedUsersTable extends ValidatedUsers
           userPk.isAcceptableOrUnknown(data['user_pk']!, _userPkMeta));
     } else if (isInserting) {
       context.missing(_userPkMeta);
-    }
-    if (data.containsKey('partner_token')) {
-      context.handle(
-          _partnerTokenMeta,
-          partnerToken.isAcceptableOrUnknown(
-              data['partner_token']!, _partnerTokenMeta));
-    } else if (isInserting) {
-      context.missing(_partnerTokenMeta);
     }
     if (data.containsKey('secret_key')) {
       context.handle(_secretKeyMeta,
@@ -345,8 +330,6 @@ class $ValidatedUsersTable extends ValidatedUsers
     return ValidatedUser(
       userPk: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}user_pk'])!,
-      partnerToken: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}partner_token'])!,
       secretKey: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}secret_key'])!,
       partnerPk: attachedDatabase.typeMapping
@@ -362,19 +345,14 @@ class $ValidatedUsersTable extends ValidatedUsers
 
 class ValidatedUser extends DataClass implements Insertable<ValidatedUser> {
   final String userPk;
-  final String partnerToken;
   final String secretKey;
   final String partnerPk;
   const ValidatedUser(
-      {required this.userPk,
-      required this.partnerToken,
-      required this.secretKey,
-      required this.partnerPk});
+      {required this.userPk, required this.secretKey, required this.partnerPk});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['user_pk'] = Variable<String>(userPk);
-    map['partner_token'] = Variable<String>(partnerToken);
     map['secret_key'] = Variable<String>(secretKey);
     map['partner_pk'] = Variable<String>(partnerPk);
     return map;
@@ -383,7 +361,6 @@ class ValidatedUser extends DataClass implements Insertable<ValidatedUser> {
   ValidatedUsersCompanion toCompanion(bool nullToAbsent) {
     return ValidatedUsersCompanion(
       userPk: Value(userPk),
-      partnerToken: Value(partnerToken),
       secretKey: Value(secretKey),
       partnerPk: Value(partnerPk),
     );
@@ -394,7 +371,6 @@ class ValidatedUser extends DataClass implements Insertable<ValidatedUser> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ValidatedUser(
       userPk: serializer.fromJson<String>(json['userPk']),
-      partnerToken: serializer.fromJson<String>(json['partnerToken']),
       secretKey: serializer.fromJson<String>(json['secretKey']),
       partnerPk: serializer.fromJson<String>(json['partnerPk']),
     );
@@ -404,20 +380,15 @@ class ValidatedUser extends DataClass implements Insertable<ValidatedUser> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'userPk': serializer.toJson<String>(userPk),
-      'partnerToken': serializer.toJson<String>(partnerToken),
       'secretKey': serializer.toJson<String>(secretKey),
       'partnerPk': serializer.toJson<String>(partnerPk),
     };
   }
 
   ValidatedUser copyWith(
-          {String? userPk,
-          String? partnerToken,
-          String? secretKey,
-          String? partnerPk}) =>
+          {String? userPk, String? secretKey, String? partnerPk}) =>
       ValidatedUser(
         userPk: userPk ?? this.userPk,
-        partnerToken: partnerToken ?? this.partnerToken,
         secretKey: secretKey ?? this.secretKey,
         partnerPk: partnerPk ?? this.partnerPk,
       );
@@ -425,7 +396,6 @@ class ValidatedUser extends DataClass implements Insertable<ValidatedUser> {
   String toString() {
     return (StringBuffer('ValidatedUser(')
           ..write('userPk: $userPk, ')
-          ..write('partnerToken: $partnerToken, ')
           ..write('secretKey: $secretKey, ')
           ..write('partnerPk: $partnerPk')
           ..write(')'))
@@ -433,50 +403,43 @@ class ValidatedUser extends DataClass implements Insertable<ValidatedUser> {
   }
 
   @override
-  int get hashCode => Object.hash(userPk, partnerToken, secretKey, partnerPk);
+  int get hashCode => Object.hash(userPk, secretKey, partnerPk);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ValidatedUser &&
           other.userPk == this.userPk &&
-          other.partnerToken == this.partnerToken &&
           other.secretKey == this.secretKey &&
           other.partnerPk == this.partnerPk);
 }
 
 class ValidatedUsersCompanion extends UpdateCompanion<ValidatedUser> {
   final Value<String> userPk;
-  final Value<String> partnerToken;
   final Value<String> secretKey;
   final Value<String> partnerPk;
   final Value<int> rowid;
   const ValidatedUsersCompanion({
     this.userPk = const Value.absent(),
-    this.partnerToken = const Value.absent(),
     this.secretKey = const Value.absent(),
     this.partnerPk = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   ValidatedUsersCompanion.insert({
     required String userPk,
-    required String partnerToken,
     required String secretKey,
     required String partnerPk,
     this.rowid = const Value.absent(),
   })  : userPk = Value(userPk),
-        partnerToken = Value(partnerToken),
         secretKey = Value(secretKey),
         partnerPk = Value(partnerPk);
   static Insertable<ValidatedUser> custom({
     Expression<String>? userPk,
-    Expression<String>? partnerToken,
     Expression<String>? secretKey,
     Expression<String>? partnerPk,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (userPk != null) 'user_pk': userPk,
-      if (partnerToken != null) 'partner_token': partnerToken,
       if (secretKey != null) 'secret_key': secretKey,
       if (partnerPk != null) 'partner_pk': partnerPk,
       if (rowid != null) 'rowid': rowid,
@@ -485,13 +448,11 @@ class ValidatedUsersCompanion extends UpdateCompanion<ValidatedUser> {
 
   ValidatedUsersCompanion copyWith(
       {Value<String>? userPk,
-      Value<String>? partnerToken,
       Value<String>? secretKey,
       Value<String>? partnerPk,
       Value<int>? rowid}) {
     return ValidatedUsersCompanion(
       userPk: userPk ?? this.userPk,
-      partnerToken: partnerToken ?? this.partnerToken,
       secretKey: secretKey ?? this.secretKey,
       partnerPk: partnerPk ?? this.partnerPk,
       rowid: rowid ?? this.rowid,
@@ -503,9 +464,6 @@ class ValidatedUsersCompanion extends UpdateCompanion<ValidatedUser> {
     final map = <String, Expression>{};
     if (userPk.present) {
       map['user_pk'] = Variable<String>(userPk.value);
-    }
-    if (partnerToken.present) {
-      map['partner_token'] = Variable<String>(partnerToken.value);
     }
     if (secretKey.present) {
       map['secret_key'] = Variable<String>(secretKey.value);
@@ -523,7 +481,6 @@ class ValidatedUsersCompanion extends UpdateCompanion<ValidatedUser> {
   String toString() {
     return (StringBuffer('ValidatedUsersCompanion(')
           ..write('userPk: $userPk, ')
-          ..write('partnerToken: $partnerToken, ')
           ..write('secretKey: $secretKey, ')
           ..write('partnerPk: $partnerPk, ')
           ..write('rowid: $rowid')

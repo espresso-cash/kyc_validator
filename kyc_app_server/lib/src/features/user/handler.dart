@@ -15,7 +15,6 @@ class UserEndpoint extends UserServiceBase {
       users: users
           .map((user) => User(
                 userPk: user.userPk,
-                partnerToken: user.partnerToken,
                 secretKey: user.secretKey,
               ))
           .toList(),
@@ -23,15 +22,25 @@ class UserEndpoint extends UserServiceBase {
   }
 
   @override
-  Future<SendUserDataResponse> sendUserData(
+  Future<CommonResponse> sendUserData(
       ServiceCall call, SendUserDataRequest request) async {
     await sl<UserRepository>().saveUser(
       userPK: request.user.userPk,
-      partnerToken: request.user.partnerToken,
       secretKey: request.user.secretKey,
       partnerPk: request.partnerPk,
     );
 
-    return SendUserDataResponse(success: true);
+    return CommonResponse(success: true);
+  }
+
+  @override
+  Future<CommonResponse> deleteUserData(
+      ServiceCall call, DeleteUserDataRequest request) async {
+    await sl<UserRepository>().deleteUser(
+      userPK: request.userPk,
+      partnerPk: request.partnerPk,
+    );
+
+    return CommonResponse(success: true);
   }
 }

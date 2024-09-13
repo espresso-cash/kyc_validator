@@ -16,15 +16,11 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class User extends $pb.GeneratedMessage {
   factory User({
     $core.String? secretKey,
-    $core.String? partnerToken,
     $core.String? userPk,
   }) {
     final $result = create();
     if (secretKey != null) {
       $result.secretKey = secretKey;
-    }
-    if (partnerToken != null) {
-      $result.partnerToken = partnerToken;
     }
     if (userPk != null) {
       $result.userPk = userPk;
@@ -37,8 +33,7 @@ class User extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'User', package: const $pb.PackageName(_omitMessageNames ? '' : 'validator'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'secretKey', protoName: 'secretKey')
-    ..aOS(2, _omitFieldNames ? '' : 'partnerToken', protoName: 'partnerToken')
-    ..aOS(3, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
+    ..aOS(2, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
     ..hasRequiredFields = false
   ;
 
@@ -73,22 +68,13 @@ class User extends $pb.GeneratedMessage {
   void clearSecretKey() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get partnerToken => $_getSZ(1);
+  $core.String get userPk => $_getSZ(1);
   @$pb.TagNumber(2)
-  set partnerToken($core.String v) { $_setString(1, v); }
+  set userPk($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPartnerToken() => $_has(1);
+  $core.bool hasUserPk() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPartnerToken() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get userPk => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set userPk($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasUserPk() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearUserPk() => clearField(3);
+  void clearUserPk() => clearField(2);
 }
 
 class SendUserDataRequest extends $pb.GeneratedMessage {
@@ -157,8 +143,72 @@ class SendUserDataRequest extends $pb.GeneratedMessage {
   void clearPartnerPk() => clearField(2);
 }
 
-class SendUserDataResponse extends $pb.GeneratedMessage {
-  factory SendUserDataResponse({
+class DeleteUserDataRequest extends $pb.GeneratedMessage {
+  factory DeleteUserDataRequest({
+    $core.String? userPk,
+    $core.String? partnerPk,
+  }) {
+    final $result = create();
+    if (userPk != null) {
+      $result.userPk = userPk;
+    }
+    if (partnerPk != null) {
+      $result.partnerPk = partnerPk;
+    }
+    return $result;
+  }
+  DeleteUserDataRequest._() : super();
+  factory DeleteUserDataRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DeleteUserDataRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteUserDataRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'validator'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'userPk', protoName: 'userPk')
+    ..aOS(2, _omitFieldNames ? '' : 'partnerPk', protoName: 'partnerPk')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DeleteUserDataRequest clone() => DeleteUserDataRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DeleteUserDataRequest copyWith(void Function(DeleteUserDataRequest) updates) => super.copyWith((message) => updates(message as DeleteUserDataRequest)) as DeleteUserDataRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DeleteUserDataRequest create() => DeleteUserDataRequest._();
+  DeleteUserDataRequest createEmptyInstance() => create();
+  static $pb.PbList<DeleteUserDataRequest> createRepeated() => $pb.PbList<DeleteUserDataRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteUserDataRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeleteUserDataRequest>(create);
+  static DeleteUserDataRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userPk => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userPk($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserPk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserPk() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get partnerPk => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set partnerPk($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPartnerPk() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPartnerPk() => clearField(2);
+}
+
+class CommonResponse extends $pb.GeneratedMessage {
+  factory CommonResponse({
     $core.bool? success,
   }) {
     final $result = create();
@@ -167,11 +217,11 @@ class SendUserDataResponse extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  SendUserDataResponse._() : super();
-  factory SendUserDataResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SendUserDataResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  CommonResponse._() : super();
+  factory CommonResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CommonResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SendUserDataResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'validator'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CommonResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'validator'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'success')
     ..hasRequiredFields = false
   ;
@@ -180,22 +230,22 @@ class SendUserDataResponse extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  SendUserDataResponse clone() => SendUserDataResponse()..mergeFromMessage(this);
+  CommonResponse clone() => CommonResponse()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SendUserDataResponse copyWith(void Function(SendUserDataResponse) updates) => super.copyWith((message) => updates(message as SendUserDataResponse)) as SendUserDataResponse;
+  CommonResponse copyWith(void Function(CommonResponse) updates) => super.copyWith((message) => updates(message as CommonResponse)) as CommonResponse;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static SendUserDataResponse create() => SendUserDataResponse._();
-  SendUserDataResponse createEmptyInstance() => create();
-  static $pb.PbList<SendUserDataResponse> createRepeated() => $pb.PbList<SendUserDataResponse>();
+  static CommonResponse create() => CommonResponse._();
+  CommonResponse createEmptyInstance() => create();
+  static $pb.PbList<CommonResponse> createRepeated() => $pb.PbList<CommonResponse>();
   @$core.pragma('dart2js:noInline')
-  static SendUserDataResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SendUserDataResponse>(create);
-  static SendUserDataResponse? _defaultInstance;
+  static CommonResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CommonResponse>(create);
+  static CommonResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.bool get success => $_getBF(0);
