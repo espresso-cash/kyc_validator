@@ -3,8 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:kyc_app_server/config.dart';
 import 'package:kyc_app_server/src/features/smile/client.dart';
 import 'package:kyc_app_server/src/features/smile/model.dart';
+import 'package:kyc_app_server/src/features/validator/models/kyc_model.dart';
 import 'package:kyc_app_server/src/features/validator/service/kyc_client.dart';
-import 'package:kyc_client_dart/kyc_client_dart.dart';
 import 'package:uuid/uuid.dart';
 import 'dart:typed_data';
 
@@ -52,15 +52,17 @@ class ValidatorService {
   }
 
   Future<bool> _sendToSmile({
-    required V1UserData user,
+    required KycUserInfo? user,
     required String userId,
     required String jobId,
   }) async {
     try {
       final dob =
-          DateFormat('dd/MM/yyyy').format(DateTime.parse(user.dob ?? ''));
+          DateFormat('dd/MM/yyyy').format(DateTime.parse(user?.dob ?? ''));
 
-      final photo = await modifyImage(user.photoSelfie!);
+      final rawSelfie = user?.photoSelfie ?? Uint8List(0);
+
+      final photo = await modifyImage(rawSelfie);
 
       final response = await _smileApiClient.requestUpload(
         UploadRequestDto(
@@ -71,9 +73,9 @@ class ValidatorService {
             'job_type': '1',
             // Info below is for mocking
             'FullName':
-                '${user.firstName} ${user.middleName}  ${user.lastName}',
+                '${user?.firstName} ${user?.middleName}  ${user?.lastName}',
             'DOB': dob,
-            // 'Photo': user.selfie!,
+            'Photo': base64Encode(rawSelfie),
           },
         ),
       );
@@ -83,13 +85,13 @@ class ValidatorService {
       final data = InfoData(
         idInfo: IdInfo(
           dob: dob,
-          country: user.countryCode ?? '',
+          country: user?.countryCode ?? '',
           entered: true,
-          idType: user.idType ?? '',
-          idNumber: user.idNumber ?? '',
-          firstName: user.firstName ?? '',
-          middleName: user.middleName ?? '',
-          lastName: user.lastName ?? '',
+          idType: user?.idType ?? '',
+          idNumber: user?.idNumber ?? '',
+          firstName: user?.firstName ?? '',
+          middleName: user?.middleName ?? '',
+          lastName: user?.lastName ?? '',
         ),
         images: [
           ImageDto(
@@ -109,8 +111,10 @@ class ValidatorService {
   }
 }
 
-Future<String> modifyImage(String image) async {
-  Uint8List imageData = base64Decode(image);
+Future<String> modifyImage(Uint8List? imageData) async {
+  if (imageData == null) {
+    return '';
+  }
 
   img.Image? file = img.decodeImage(imageData);
 

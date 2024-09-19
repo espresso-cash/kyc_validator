@@ -1,7 +1,12 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:cryptography/cryptography.dart' hide SecretBox;
 import 'package:injectable/injectable.dart';
 import 'package:kyc_client_dart/kyc_client_dart.dart';
 import 'package:solana/base58.dart';
+
+import '../models/kyc_model.dart';
 
 // hardcoded seed
 final validatorSeed = '8ui6TQMfAudigNuKycopDyZ6irMeS7DTSe73d2gzv1Hz';
@@ -34,16 +39,28 @@ class PartnerKycService {
         .then(base58encode);
   }
 
-  Future<V1UserData> fetchUserInfo({
+  Future<KycUserInfo?> fetchUserInfo({
     required String secretKey,
     required String userPK,
   }) async {
-    final data = await _client.getData(
-      userPK: userPK,
-      secretKey: secretKey,
-    );
+    try {
+      final data = await _client.getData(
+        userPK: userPK,
+        secretKey: secretKey,
+      );
 
-    return V1UserData.fromJson(data);
+      final selfie = data['photoSelfie'];
+      final id = data['photoIdCard'];
+
+      return KycUserInfo.fromJson(data).copyWith(
+        photoSelfie: (selfie is Uint8List) ? selfie : null,
+        photoIdCard: (id is Uint8List) ? id : null,
+      );
+    } on Exception {
+      //ignore, user not registered
+
+      return null;
+    }
   }
 
   Future<void> setValidationResult({

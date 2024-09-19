@@ -35,7 +35,7 @@ class OtpService {
       userPK: userPK,
     );
 
-    final receiver = data.email ?? '-';
+    final receiver = data?.email ?? '-';
 
     final smtpServer = SmtpServer(
       smtpHost,
@@ -74,7 +74,7 @@ class OtpService {
       userPK: userPK,
     );
 
-    final receiver = data.phone ?? '-';
+    final receiver = data?.phone ?? '-';
 
     final sms = SendSmsRequestDto(
       to: receiver,
