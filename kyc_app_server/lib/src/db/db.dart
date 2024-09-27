@@ -21,19 +21,8 @@ class OtpRecords extends Table {
 
 enum OtpType { email, phone }
 
-class ValidatedUsers extends Table {
-  const ValidatedUsers();
-
-  TextColumn get userPk => text()();
-  TextColumn get secretKey => text()();
-  TextColumn get partnerPk => text()();
-
-  @override
-  Set<Column> get primaryKey => {userPk, partnerPk};
-}
-
 @DriftDatabase(
-  tables: [OtpRecords, ValidatedUsers],
+  tables: [OtpRecords],
 )
 class AppDatabase extends _$AppDatabase {
   factory AppDatabase() {

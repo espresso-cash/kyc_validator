@@ -89,16 +89,6 @@ class _KycPageState extends State<KycPage> {
             ),
           );
 
-          await userClient.sendUserData(
-            SendUserDataRequest(
-              user: User(
-                secretKey: state.rawSecretKey,
-                userPk: state.authPublicKey,
-              ),
-              partnerPk: partnerAuthPk,
-            ),
-          );
-
           if (!mounted) return;
 
           showCpSnackbar(context, message: 'Success, KYC submitted');

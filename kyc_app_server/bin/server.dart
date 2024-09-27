@@ -1,7 +1,6 @@
 import 'package:grpc/grpc.dart';
 import 'package:kyc_app_server/configure_app.dart';
 import 'package:kyc_app_server/src/features/otp/handler.dart';
-import 'package:kyc_app_server/src/features/user/handler.dart';
 import 'package:kyc_app_server/src/features/validator/handler.dart';
 
 Future<void> main(List<String> args) async {
@@ -11,7 +10,6 @@ Future<void> main(List<String> args) async {
     services: [
       KycEndpoint(),
       OtpEndpoint(),
-      UserEndpoint(),
     ],
     codecRegistry: CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
   );
