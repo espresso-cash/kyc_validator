@@ -24,7 +24,6 @@ dependencies:
   kyc_client_dart:
     git:
       url: https://github.com/espresso-cash/kyc_client_dart.git
-      ref: upd-api
   path_provider: ^2.1.3
   protobuf: ^3.1.0
   provider: ^6.1.2

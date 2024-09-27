@@ -529,8 +529,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: upd-api
-      resolved-ref: "5f8de1a7ed3daed41cc1350a9458ebbfc8d56c97"
+      ref: HEAD
+      resolved-ref: "8aae7afd1413f6713c5fa14147db3574d1fd8382"
       url: "https://github.com/espresso-cash/kyc_client_dart.git"
     source: git
     version: "1.0.0"
